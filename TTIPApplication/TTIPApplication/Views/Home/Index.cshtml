@@ -1,11 +1,26 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "TTIP";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <form>
+        <div>
+            <select id="city">
+                <option value="">City</option>
+                <option value="la">LA</option>
+                <option value="oxnard">OXNARD</option>
+                <option value="santaMaria">SANTA MARIA</option>
+            </select>
+            <select id="categori">
+                <option value="">Categori</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="hotel">Hotel</option>
+                <option value="leisure">Leisure</option>
+            </select>
+            <input type="text" id="name"/>
+            <input type="submit" value="Search" />
+        </div>
+    </form>
 </div>
 
 <div class="row">
