@@ -1,34 +1,52 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <style>
+        p{
+            text-align:center
+        }
 
+        .image {
+            text-align : center
+        }
+
+
+    </style>
 
 </head>
 
 <body>
-    <img src="bbq1.jpg" width="275" height="183"> <img src="bbq2.jpg" width="275" height="183"> <img src="bbq3.jpg" width="275" height="183">
-
+    <div class="image"> 
+        <img src="bbq1.jpg" width="275" height="183">
+        <img src="bbq2.jpg" width="275" height="183">
+        <img src="bbq3.jpg" width="275" height="183">
+    </div>
+      
     <form action="">
-        <p id="name">Name</p>
-        <p id="address">Address</p>
-        <p id="information">Information</p>
+        <p id="name" style="font-weight: bold; font-size: 3em;">Name</p>
+        <p id="address" style="color: gray;">Address</p>
+        <p id="information" style="font-size: 1em;">Information</p>
 
-        <hr>
-        Review
-        <input type="submit" value="submit">
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand">Review</a>
+            <form class="form-inline">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+            </form>
+        </nav>
+
+
     </form>
-    <hr>
     <div style="overflow:scroll">
-        <table>
+        <table class="table">
             <tr>
-                <td rowspan="3"><img src="bbq1.jpg" width="200" height="180"></td>
-                <td>Writer : Woosung</td>
+                <td rowspan="3"><img src="bbq1.jpg" width="100" height="100"></td>
+                <td height="50">Writer : Woosung</td>
             </tr>
             <tr>
-                <td>Date : 01/14/2020</td>
+                <td width="800" height="50">Date : 01/14/2020</td>
             </tr>
             <tr>
-                <td>Comment : Good!</td>
+                <td height="50">Comment : Good!</td>
             </tr>
         </table>
     </div>
