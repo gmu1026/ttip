@@ -1,8 +1,13 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Add";
 }
+<div.container-fluid>
+    <form action="">
+        <div class="card">
+            <div class="card-body">
+                <label>Writer : <input type="text" /></label>
 
+<<<<<<< Updated upstream
 <div class="container mt-3">
     <h2>Custom File</h2>
     <p>To create a custom file upload, wrap a container element with a class of .custom-file around the input with type="file". Then add the .custom-file-input to the file input:</p>
@@ -15,10 +20,49 @@
 
         <p>Default file:</p>
         <input type="file" id="myFile" name="filename2">
+=======
+>>>>>>> Stashed changes
 
-        <div class="mt-3">
-            <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="rate">
+                    <label>Score : </label>
+                   
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="contents">Contents :</label>
+                    <textarea class="form-control" rows="5" id="contents"></textarea>
+                </div>
+
+                
+                    <label>Attached image : </label>
+                    <div class="w-50">
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" id="customFile" name="filename">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+               
+
+                <div class="mt-3">
+                    <div class="float-right">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-primary">Back</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 </div>
-
