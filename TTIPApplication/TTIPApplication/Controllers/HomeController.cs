@@ -15,7 +15,7 @@ namespace TTIPApplication.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "TTIP";
+            ViewBag.Message = "TEST";
 
             return View();
         }

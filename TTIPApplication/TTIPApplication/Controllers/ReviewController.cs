@@ -12,6 +12,13 @@ namespace TTIPApplication.Controllers
 {
     public class ReviewController : Controller
     {
+        // GET: Review
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+
         private TTIP_DB_1Entities db = new TTIP_DB_1Entities();
 
         // GET: Review
