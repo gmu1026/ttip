@@ -135,36 +135,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\category.cs">
-      <DependentUpon>newModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CITY.cs">
-      <DependentUpon>newModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\newModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>newModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\newModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>newModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\newModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>newModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\photo.cs">
-      <DependentUpon>newModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PLACE.cs">
-      <DependentUpon>newModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\review_.cs">
-      <DependentUpon>newModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,16 +148,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="ConnectionStrings.config" />
-    <Content Include="Models\newModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>newModel.Context.cs</LastGenOutput>
-      <DependentUpon>newModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\newModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>newModel.edmx</DependentUpon>
-      <LastGenOutput>newModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -211,13 +171,6 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\newModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>newModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\newModel.edmx.diagram">
-      <DependentUpon>newModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -332,6 +285,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="image\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
