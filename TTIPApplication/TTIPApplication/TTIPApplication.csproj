@@ -130,10 +130,44 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CITiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlaceController.cs" />
+    <Compile Include="Controllers\PLACEsController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\category.cs">
+      <DependentUpon>TTip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CITY.cs">
+      <DependentUpon>TTip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\photo.cs">
+      <DependentUpon>TTip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PLACE.cs">
+      <DependentUpon>TTip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\review_.cs">
+      <DependentUpon>TTip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TTip.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TTip.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TTip.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TTip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TTip.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TTip.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -144,14 +178,26 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="ConnectionStrings.config" />
+    <Content Include="Models\TTip.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TTip.Context.cs</LastGenOutput>
+      <DependentUpon>TTip.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\TTip.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TTip.edmx</DependentUpon>
+      <LastGenOutput>TTip.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -171,6 +217,15 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <EntityDeploy Include="Models\TTip.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TTip.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TTip.edmx.diagram">
+      <DependentUpon>TTip.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -271,6 +326,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Place\Index.cshtml" />
+    <Content Include="Views\Review\Add.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -281,6 +337,26 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Review\Create.cshtml" />
+    <Content Include="Views\Review\Delete.cshtml" />
+    <Content Include="Views\Review\Details.cshtml" />
+    <Content Include="Views\Review\Edit.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\CITies\Create.cshtml" />
+    <Content Include="Views\CITies\Delete.cshtml" />
+    <Content Include="Views\CITies\Details.cshtml" />
+    <Content Include="Views\CITies\Edit.cshtml" />
+    <Content Include="Views\CITies\Index.cshtml" />
+    <Content Include="Views\PLACEs\Create.cshtml" />
+    <Content Include="Views\PLACEs\Delete.cshtml" />
+    <Content Include="Views\PLACEs\Details.cshtml" />
+    <Content Include="Views\PLACEs\Edit.cshtml" />
+    <Content Include="Views\PLACEs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,7 +373,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
