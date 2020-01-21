@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c81d767401c54903b15e39f7d641de9c" Name="Diagram1">
-        <EntityTypeShape EntityType="TTIP_DB_1Model.category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TTIP_DB_1Model.CITY" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TTIP_DB_1Model.PLACE" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="TTIP_DB_1Model.review_" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="TTIP_DB_1Model.photo" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="TTIP_DB_1Model.FK_PLACE_category" ManuallyRouted="false" />
-        <AssociationConnector Association="TTIP_DB_1Model.FK_PLACE_CITY" ManuallyRouted="false" />
-        <AssociationConnector Association="TTIP_DB_1Model.FK_review__PLACE" ManuallyRouted="false" />
+      <Diagram DiagramId="5c9540e6e4bc4f7d852cdb82dae05635" Name="Diagram1">
+        <EntityTypeShape EntityType="ttipModel.category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ttipModel.CITY" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ttipModel.PLACE" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ttipModel.review_" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ttipModel.photo" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="ttipModel.FK_PLACE_category" ManuallyRouted="false" />
+        <AssociationConnector Association="ttipModel.FK_PLACE_CITY" ManuallyRouted="false" />
+        <AssociationConnector Association="ttipModel.FK_review__PLACE" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

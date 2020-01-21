@@ -13,10 +13,10 @@ namespace TTIPApplication.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TTIP_DB_1Entities : DbContext
+    public partial class ttipEntities : DbContext
     {
-        public TTIP_DB_1Entities()
-            : base("name=TTIP_DB_1Entities")
+        public ttipEntities()
+            : base("name=ttipEntities")
         {
         }
     
