@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TTIP_DB_1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ttipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="category_name" />
@@ -18,7 +18,7 @@
           <Property Name="CITYNAME" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--생성 중 오류 발생:
-경고 6002: 테이블/뷰 'TTIP_DB_1.dbo.photo'에 기본 키가 정의되지 않았습니다. 키가 유추되었고 읽기 전용 테이블/뷰로 정의되었습니다.-->
+경고 6002: 테이블/뷰 'ttip.dbo.photo'에 기본 키가 정의되지 않았습니다. 키가 유추되었고 읽기 전용 테이블/뷰로 정의되었습니다.-->
         <EntityType Name="photo">
           <Key>
             <PropertyRef Name="no" />
@@ -86,7 +86,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TTIP_DB_1ModelStoreContainer">
+        <EntityContainer Name="ttipModelStoreContainer">
           <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CITY" EntityType="Self.CITY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PLACE" EntityType="Self.PLACE" Schema="dbo" store:Type="Tables" />
@@ -115,7 +115,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TTIP_DB_1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ttipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="category_name" />
@@ -201,7 +201,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TTIP_DB_1Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ttipEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="category" EntityType="Self.category" />
           <EntitySet Name="CITY" EntityType="Self.CITY" />
           <EntitySet Name="PLACE" EntityType="Self.PLACE" />
@@ -225,23 +225,23 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TTIP_DB_1ModelStoreContainer" CdmEntityContainer="TTIP_DB_1Entities">
+        <EntityContainerMapping StorageEntityContainer="ttipModelStoreContainer" CdmEntityContainer="ttipEntities">
           <EntitySetMapping Name="category">
-            <EntityTypeMapping TypeName="TTIP_DB_1Model.category">
+            <EntityTypeMapping TypeName="ttipModel.category">
               <MappingFragment StoreEntitySet="category">
                 <ScalarProperty Name="category_name" ColumnName="category_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CITY">
-            <EntityTypeMapping TypeName="TTIP_DB_1Model.CITY">
+            <EntityTypeMapping TypeName="ttipModel.CITY">
               <MappingFragment StoreEntitySet="CITY">
                 <ScalarProperty Name="CITYNAME" ColumnName="CITYNAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PLACE">
-            <EntityTypeMapping TypeName="TTIP_DB_1Model.PLACE">
+            <EntityTypeMapping TypeName="ttipModel.PLACE">
               <MappingFragment StoreEntitySet="PLACE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="STORE_NAME" ColumnName="STORE_NAME" />
@@ -252,7 +252,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="review_">
-            <EntityTypeMapping TypeName="TTIP_DB_1Model.review_">
+            <EntityTypeMapping TypeName="ttipModel.review_">
               <MappingFragment StoreEntitySet="review_">
                 <ScalarProperty Name="REVIEW_NUM" ColumnName="REVIEW_NUM" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -264,7 +264,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="photo">
-            <EntityTypeMapping TypeName="TTIP_DB_1Model.photo">
+            <EntityTypeMapping TypeName="ttipModel.photo">
               <MappingFragment StoreEntitySet="photo">
                 <ScalarProperty Name="no" ColumnName="no" />
                 <ScalarProperty Name="photo1" ColumnName="photo" />
