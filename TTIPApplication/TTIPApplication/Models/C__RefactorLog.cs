@@ -12,15 +12,8 @@ namespace TTIPApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class review_
+    public partial class C__RefactorLog
     {
-        public int REVIEW_NUM { get; set; }
-        public int ID { get; set; }
-        public string WRITER { get; set; }
-        public int SCORE { get; set; }
-        public System.DateTime UPDATE_DATE { get; set; }
-        public string substance { get; set; }
-    
-        public virtual PLACE PLACE { get; set; }
+        public System.Guid OperationKey { get; set; }
     }
 }

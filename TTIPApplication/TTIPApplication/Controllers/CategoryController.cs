@@ -10,107 +10,107 @@ using TTIPApplication.Models;
 
 namespace TTIPApplication.Controllers
 {
-    public class categoriesController : Controller
+    public class CategoryController : Controller
     {
-        private ttipEntities1 db = new ttipEntities1();
+        private TTIP_DBEntities db = new TTIP_DBEntities();
 
-        // GET: categories
+        // GET: Category
         public ActionResult Index()
         {
-            return View(db.category.ToList());
+            return View(db.CATEGORY.ToList());
         }
 
-        // GET: categories/Details/5
+        // GET: Category/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            category category = db.category.Find(id);
-            if (category == null)
+            CATEGORY cATEGORY = db.CATEGORY.Find(id);
+            if (cATEGORY == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(cATEGORY);
         }
 
-        // GET: categories/Create
+        // GET: Category/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: categories/Create
+        // POST: Category/Create
         // 초과 게시 공격으로부터 보호하려면 바인딩하려는 특정 속성을 사용하도록 설정하십시오. 
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "category_name")] category category)
+        public ActionResult Create([Bind(Include = "CATEGORY_NAME")] CATEGORY cATEGORY)
         {
             if (ModelState.IsValid)
             {
-                db.category.Add(category);
+                db.CATEGORY.Add(cATEGORY);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(cATEGORY);
         }
 
-        // GET: categories/Edit/5
+        // GET: Category/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            category category = db.category.Find(id);
-            if (category == null)
+            CATEGORY cATEGORY = db.CATEGORY.Find(id);
+            if (cATEGORY == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(cATEGORY);
         }
 
-        // POST: categories/Edit/5
+        // POST: Category/Edit/5
         // 초과 게시 공격으로부터 보호하려면 바인딩하려는 특정 속성을 사용하도록 설정하십시오. 
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "category_name")] category category)
+        public ActionResult Edit([Bind(Include = "CATEGORY_NAME")] CATEGORY cATEGORY)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
+                db.Entry(cATEGORY).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            return View(cATEGORY);
         }
 
-        // GET: categories/Delete/5
+        // GET: Category/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            category category = db.category.Find(id);
-            if (category == null)
+            CATEGORY cATEGORY = db.CATEGORY.Find(id);
+            if (cATEGORY == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(cATEGORY);
         }
 
-        // POST: categories/Delete/5
+        // POST: Category/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            category category = db.category.Find(id);
-            db.category.Remove(category);
+            CATEGORY cATEGORY = db.CATEGORY.Find(id);
+            db.CATEGORY.Remove(cATEGORY);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

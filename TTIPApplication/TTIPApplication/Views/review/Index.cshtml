@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TTIPApplication.Models.review_>
+﻿@model IEnumerable<TTIPApplication.Models.REVIEW>
 
 @{
     ViewBag.Title = "Index";
@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.UPDATE_DATE)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.substance)
+            @Html.DisplayNameFor(model => model.REVIEW_COMMENT)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PLACE.STORE_NAME)
@@ -41,15 +41,15 @@
             @Html.DisplayFor(modelItem => item.UPDATE_DATE)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.substance)
+            @Html.DisplayFor(modelItem => item.REVIEW_COMMENT)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PLACE.STORE_NAME)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.REVIEW_NUM }) |
-            @Html.ActionLink("Details", "Details", new { id=item.REVIEW_NUM }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.REVIEW_NUM })
+            @Html.ActionLink("Edit", "Edit", new { id=item.REVIEW_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.REVIEW_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.REVIEW_ID })
         </td>
     </tr>
 }

@@ -1,53 +1,85 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        p{
-            text-align:center
-        }
+﻿@model IEnumerable<TTIPApplication.Models.PLACE>
 
-        .image {
-            text-align : center
-        }
+@{
+    ViewBag.Title = "Index";
+}
 
-
-    </style>
-
-</head>
-
-<body>
-    <div class="image"> 
-        <img src="bbq1.jpg" width="275" height="183">
-        <img src="bbq2.jpg" width="275" height="183">
-        <img src="bbq3.jpg" width="275" height="183">
-    </div>
-      
-    <form action="">
-        <p id="name" style="font-weight: bold; font-size: 3em;">Name</p>
-        <p id="address" style="color: gray;">Address</p>
-        <p id="information" style="font-size: 1em;">Information</p>
-
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand">Review</a>
-            <form class="form-inline">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+    <section class="page-section" id="services">
+        <div class="container">
+            <h2 class="text-center mt-0">Search</h2>
+            <hr class="divider my-4">
+            <form action="/Place/Search" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DropDownList("CITY", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownList("CATEGORY", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="store_name" name="store_name" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="submit" class="form-control" />
+                    </div>
+                </div>
             </form>
-        </nav>
+        </div>
+    </section>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.STORE_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXPLANATION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DETAIL_IMAGE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CATEGORY1.CATEGORY_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CITY1.CITY_NAME)
+        </th>
+        <th></th>
+    </tr>
 
-    </form>
-    <div style="overflow:scroll">
-        <table class="table">
-            <tr>
-                <td rowspan="3"><img src="bbq1.jpg" width="100" height="100"></td>
-                <td height="50">Writer : Woosung</td>
-            </tr>
-            <tr>
-                <td width="800" height="50">Date : 01/14/2020</td>
-            </tr>
-            <tr>
-                <td height="50">Comment : Good!</td>
-            </tr>
-        </table>
-    </div>
-</html>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.STORE_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EXPLANATION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADDRESS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DETAIL_IMAGE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CATEGORY1.CATEGORY_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CITY1.CITY_NAME)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

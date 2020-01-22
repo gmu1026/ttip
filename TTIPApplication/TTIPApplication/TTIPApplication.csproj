@@ -130,45 +130,46 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\categoriesController.cs" />
-    <Compile Include="Controllers\CITiesController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\photosController.cs" />
     <Compile Include="Controllers\PlaceController.cs" />
-    <Compile Include="Controllers\PLACEsController.cs" />
-    <Compile Include="Controllers\reviewController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\category.cs">
-      <DependentUpon>ttip.tt</DependentUpon>
+    <Compile Include="Models\CATEGORY.cs">
+      <DependentUpon>TTIP_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CITY.cs">
-      <DependentUpon>ttip.tt</DependentUpon>
+      <DependentUpon>TTIP_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\photo.cs">
-      <DependentUpon>ttip.tt</DependentUpon>
+    <Compile Include="Models\C__RefactorLog.cs">
+      <DependentUpon>TTIP_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PHOTO.cs">
+      <DependentUpon>TTIP_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PLACE.cs">
-      <DependentUpon>ttip.tt</DependentUpon>
+      <DependentUpon>TTIP_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\review_.cs">
-      <DependentUpon>ttip.tt</DependentUpon>
+    <Compile Include="Models\REVIEW.cs">
+      <DependentUpon>TTIP_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ttip.Context.cs">
+    <Compile Include="Models\TTIP_DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ttip.Context.tt</DependentUpon>
+      <DependentUpon>TTIP_DB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ttip.cs">
+    <Compile Include="Models\TTIP_DB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ttip.tt</DependentUpon>
+      <DependentUpon>TTIP_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ttip.Designer.cs">
+    <Compile Include="Models\TTIP_DB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ttip.edmx</DependentUpon>
+      <DependentUpon>TTIP_DB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -186,15 +187,15 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="ConnectionStrings.config" />
-    <Content Include="Models\ttip.Context.tt">
+    <Content Include="Models\TTIP_DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ttip.edmx</DependentUpon>
-      <LastGenOutput>ttip.Context.cs</LastGenOutput>
+      <DependentUpon>TTIP_DB.edmx</DependentUpon>
+      <LastGenOutput>TTIP_DB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ttip.tt">
+    <Content Include="Models\TTIP_DB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ttip.edmx</DependentUpon>
-      <LastGenOutput>ttip.cs</LastGenOutput>
+      <DependentUpon>TTIP_DB.edmx</DependentUpon>
+      <LastGenOutput>TTIP_DB.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -222,12 +223,12 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <EntityDeploy Include="Models\ttip.edmx">
+    <EntityDeploy Include="Models\TTIP_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ttip.Designer.cs</LastGenOutput>
+      <LastGenOutput>TTIP_DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ttip.edmx.diagram">
-      <DependentUpon>ttip.edmx</DependentUpon>
+    <Content Include="Models\TTIP_DB.edmx.diagram">
+      <DependentUpon>TTIP_DB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -311,9 +312,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Views\Place\bbq1.jpg" />
-    <Content Include="Views\Place\bbq2.jpg" />
-    <Content Include="Views\Place\bbq3.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -325,8 +323,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Place\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -339,31 +335,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\categories\Create.cshtml" />
-    <Content Include="Views\categories\Delete.cshtml" />
-    <Content Include="Views\categories\Details.cshtml" />
-    <Content Include="Views\categories\Edit.cshtml" />
-    <Content Include="Views\categories\Index.cshtml" />
-    <Content Include="Views\CITies\Create.cshtml" />
-    <Content Include="Views\CITies\Delete.cshtml" />
-    <Content Include="Views\CITies\Details.cshtml" />
-    <Content Include="Views\CITies\Edit.cshtml" />
-    <Content Include="Views\CITies\Index.cshtml" />
-    <Content Include="Views\PLACEs\Create.cshtml" />
-    <Content Include="Views\PLACEs\Delete.cshtml" />
-    <Content Include="Views\PLACEs\Details.cshtml" />
-    <Content Include="Views\PLACEs\Edit.cshtml" />
-    <Content Include="Views\PLACEs\Index.cshtml" />
-    <Content Include="Views\photos\Create.cshtml" />
-    <Content Include="Views\photos\Delete.cshtml" />
-    <Content Include="Views\photos\Details.cshtml" />
-    <Content Include="Views\photos\Edit.cshtml" />
-    <Content Include="Views\photos\Index.cshtml" />
-    <Content Include="Views\review\Create.cshtml" />
-    <Content Include="Views\review\Delete.cshtml" />
-    <Content Include="Views\review\Details.cshtml" />
-    <Content Include="Views\review\Edit.cshtml" />
-    <Content Include="Views\review\Index.cshtml" />
+    <Content Include="Views\City\Create.cshtml" />
+    <Content Include="Views\Review\Create.cshtml" />
+    <Content Include="Views\Review\Delete.cshtml" />
+    <Content Include="Views\Review\Edit.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\Place\Create.cshtml" />
+    <Content Include="Views\Place\Delete.cshtml" />
+    <Content Include="Views\Place\Details.cshtml" />
+    <Content Include="Views\Place\Edit.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

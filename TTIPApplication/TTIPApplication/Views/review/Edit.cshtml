@@ -1,4 +1,4 @@
-﻿@model TTIPApplication.Models.review_
+﻿@model TTIPApplication.Models.REVIEW
 
 @{
     ViewBag.Title = "Edit";
@@ -12,16 +12,16 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>review_</h4>
+        <h4>REVIEW</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.REVIEW_NUM)
+        @Html.HiddenFor(model => model.REVIEW_ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ID, "ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PID, "PID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+                @Html.DropDownList("PID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PID, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -50,10 +50,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.substance, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.REVIEW_COMMENT, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.substance, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.substance, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.REVIEW_COMMENT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.REVIEW_COMMENT, "", new { @class = "text-danger" })
             </div>
         </div>
 

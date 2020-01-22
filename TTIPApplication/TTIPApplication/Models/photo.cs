@@ -12,11 +12,11 @@ namespace TTIPApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class photo
+    public partial class PHOTO
     {
-        public int id { get; set; }
-        public string photo_path { get; set; }
-        public int place_id { get; set; }
+        public int PID { get; set; }
+        public string PHOTO1 { get; set; }
+        public int PHOTO_NUM { get; set; }
     
         public virtual PLACE PLACE { get; set; }
     }

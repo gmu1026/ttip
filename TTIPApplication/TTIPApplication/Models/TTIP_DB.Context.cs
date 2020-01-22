@@ -13,10 +13,10 @@ namespace TTIPApplication.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ttipEntities1 : DbContext
+    public partial class TTIP_DBEntities : DbContext
     {
-        public ttipEntities1()
-            : base("name=ttipEntities1")
+        public TTIP_DBEntities()
+            : base("name=TTIP_DBEntities")
         {
         }
     
@@ -25,10 +25,11 @@ namespace TTIPApplication.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<category> category { get; set; }
+        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
+        public virtual DbSet<CATEGORY> CATEGORY { get; set; }
         public virtual DbSet<CITY> CITY { get; set; }
-        public virtual DbSet<photo> photo { get; set; }
+        public virtual DbSet<PHOTO> PHOTO { get; set; }
         public virtual DbSet<PLACE> PLACE { get; set; }
-        public virtual DbSet<review_> review_ { get; set; }
+        public virtual DbSet<REVIEW> REVIEW { get; set; }
     }
 }

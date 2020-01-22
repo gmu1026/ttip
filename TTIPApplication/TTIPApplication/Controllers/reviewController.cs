@@ -10,114 +10,114 @@ using TTIPApplication.Models;
 
 namespace TTIPApplication.Controllers
 {
-    public class reviewController : Controller
+    public class ReviewController : Controller
     {
-        private ttipEntities1 db = new ttipEntities1();
+        private TTIP_DBEntities db = new TTIP_DBEntities();
 
-        // GET: review
+        // GET: Review
         public ActionResult Index()
         {
-            var review_ = db.review_.Include(r => r.PLACE);
-            return View(review_.ToList());
+            var rEVIEW = db.REVIEW.Include(r => r.PLACE);
+            return View(rEVIEW.ToList());
         }
 
-        // GET: review/Details/5
+        // GET: Review/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            review_ review_ = db.review_.Find(id);
-            if (review_ == null)
+            REVIEW rEVIEW = db.REVIEW.Find(id);
+            if (rEVIEW == null)
             {
                 return HttpNotFound();
             }
-            return View(review_);
+            return View(rEVIEW);
         }
 
-        // GET: review/Create
+        // GET: Review/Create
         public ActionResult Create()
         {
-            ViewBag.ID = new SelectList(db.PLACE, "ID", "STORE_NAME");
+            ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME");
             return View();
         }
 
-        // POST: review/Create
+        // POST: Review/Create
         // 초과 게시 공격으로부터 보호하려면 바인딩하려는 특정 속성을 사용하도록 설정하십시오. 
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "REVIEW_NUM,ID,WRITER,SCORE,UPDATE_DATE,substance")] review_ review_)
+        public ActionResult Create([Bind(Include = "REVIEW_ID,PID,WRITER,SCORE,UPDATE_DATE,REVIEW_COMMENT")] REVIEW rEVIEW)
         {
             if (ModelState.IsValid)
             {
-                db.review_.Add(review_);
+                db.REVIEW.Add(rEVIEW);
                 db.SaveChanges();
-                return Redirect("~/PLACEs/Details/" + review_.ID);
+                return RedirectToAction("Index");
             }
 
-            ViewBag.ID = new SelectList(db.PLACE, "ID", "STORE_NAME", review_.ID);
-            return View(review_);
+            ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", rEVIEW.PID);
+            return View(rEVIEW);
         }
 
-        // GET: review/Edit/5
+        // GET: Review/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            review_ review_ = db.review_.Find(id);
-            if (review_ == null)
+            REVIEW rEVIEW = db.REVIEW.Find(id);
+            if (rEVIEW == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ID = new SelectList(db.PLACE, "ID", "STORE_NAME", review_.ID);
-            return View(review_);
+            ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", rEVIEW.PID);
+            return View(rEVIEW);
         }
 
-        // POST: review/Edit/5
+        // POST: Review/Edit/5
         // 초과 게시 공격으로부터 보호하려면 바인딩하려는 특정 속성을 사용하도록 설정하십시오. 
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "REVIEW_NUM,ID,WRITER,SCORE,UPDATE_DATE,substance")] review_ review_)
+        public ActionResult Edit([Bind(Include = "REVIEW_ID,PID,WRITER,SCORE,UPDATE_DATE,REVIEW_COMMENT")] REVIEW rEVIEW)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(review_).State = EntityState.Modified;
+                db.Entry(rEVIEW).State = EntityState.Modified;
                 db.SaveChanges();
-                return Redirect("~/PLACEs/Details/" + review_.ID);
+                return RedirectToAction("Index");
             }
-            ViewBag.ID = new SelectList(db.PLACE, "ID", "STORE_NAME", review_.ID);
-            return View(review_);
+            ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", rEVIEW.PID);
+            return View(rEVIEW);
         }
 
-        // GET: review/Delete/5
+        // GET: Review/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            review_ review_ = db.review_.Find(id);
-            if (review_ == null)
+            REVIEW rEVIEW = db.REVIEW.Find(id);
+            if (rEVIEW == null)
             {
                 return HttpNotFound();
             }
-            return View(review_);
+            return View(rEVIEW);
         }
 
-        // POST: review/Delete/5
+        // POST: Review/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            review_ review_ = db.review_.Find(id);
-            db.review_.Remove(review_);
+            REVIEW rEVIEW = db.REVIEW.Find(id);
+            db.REVIEW.Remove(rEVIEW);
             db.SaveChanges();
-            return Redirect("~/PLACEs/Details/" + review_.ID);
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

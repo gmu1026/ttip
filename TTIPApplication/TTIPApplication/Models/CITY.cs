@@ -20,7 +20,7 @@ namespace TTIPApplication.Models
             this.PLACE = new HashSet<PLACE>();
         }
     
-        public string CITYNAME { get; set; }
+        public string CITY_NAME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PLACE> PLACE { get; set; }
