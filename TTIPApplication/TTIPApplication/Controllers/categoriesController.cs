@@ -10,119 +10,107 @@ using TTIPApplication.Models;
 
 namespace TTIPApplication.Controllers
 {
-    public class PLACEsController : Controller
+    public class categoriesController : Controller
     {
         private ttipEntities1 db = new ttipEntities1();
 
-        // GET: PLACEs
+        // GET: categories
         public ActionResult Index()
         {
-            var pLACE = db.PLACE.Include(p => p.category1).Include(p => p.CITY1);
-            ViewBag.category = new SelectList(db.category, "category_name", "category_name");
-            ViewBag.CITY = new SelectList(db.CITY, "CITYNAME", "CITYNAME");
-            return View(pLACE.ToList());
+            return View(db.category.ToList());
         }
 
-        // GET: PLACEs/Details/5
-        public ActionResult Details(int? id)
+        // GET: categories/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PLACE pLACE = db.PLACE.Find(id);
-            ViewBag.reviews = db.review_.Where(r => r.ID == id).ToList();
-            if (pLACE == null)
+            category category = db.category.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(pLACE);
+            return View(category);
         }
 
-        // GET: PLACEs/Create
+        // GET: categories/Create
         public ActionResult Create()
         {
-            ViewBag.category = new SelectList(db.category, "category_name", "category_name");
-            ViewBag.CITY = new SelectList(db.CITY, "CITYNAME", "CITYNAME");
             return View();
         }
 
-        // POST: PLACEs/Create
+        // POST: categories/Create
         // 초과 게시 공격으로부터 보호하려면 바인딩하려는 특정 속성을 사용하도록 설정하십시오. 
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,STORE_NAME,CITY,category,place_ex")] PLACE pLACE)
+        public ActionResult Create([Bind(Include = "category_name")] category category)
         {
             if (ModelState.IsValid)
             {
-                db.PLACE.Add(pLACE);
+                db.category.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.category = new SelectList(db.category, "category_name", "category_name", pLACE.category);
-            ViewBag.CITY = new SelectList(db.CITY, "CITYNAME", "CITYNAME", pLACE.CITY);
-            return View(pLACE);
+            return View(category);
         }
 
-        // GET: PLACEs/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: categories/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PLACE pLACE = db.PLACE.Find(id);
-            if (pLACE == null)
+            category category = db.category.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.category = new SelectList(db.category, "category_name", "category_name", pLACE.category);
-            ViewBag.CITY = new SelectList(db.CITY, "CITYNAME", "CITYNAME", pLACE.CITY);
-            return View(pLACE);
+            return View(category);
         }
 
-        // POST: PLACEs/Edit/5
+        // POST: categories/Edit/5
         // 초과 게시 공격으로부터 보호하려면 바인딩하려는 특정 속성을 사용하도록 설정하십시오. 
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,STORE_NAME,CITY,category,place_ex")] PLACE pLACE)
+        public ActionResult Edit([Bind(Include = "category_name")] category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pLACE).State = EntityState.Modified;
+                db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.category = new SelectList(db.category, "category_name", "category_name", pLACE.category);
-            ViewBag.CITY = new SelectList(db.CITY, "CITYNAME", "CITYNAME", pLACE.CITY);
-            return View(pLACE);
+            return View(category);
         }
 
-        // GET: PLACEs/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: categories/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PLACE pLACE = db.PLACE.Find(id);
-            if (pLACE == null)
+            category category = db.category.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(pLACE);
+            return View(category);
         }
 
-        // POST: PLACEs/Delete/5
+        // POST: categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            PLACE pLACE = db.PLACE.Find(id);
-            db.PLACE.Remove(pLACE);
+            category category = db.category.Find(id);
+            db.category.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

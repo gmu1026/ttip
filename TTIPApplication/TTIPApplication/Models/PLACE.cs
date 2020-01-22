@@ -17,6 +17,7 @@ namespace TTIPApplication.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PLACE()
         {
+            this.photo = new HashSet<photo>();
             this.review_ = new HashSet<review_>();
         }
     
@@ -28,6 +29,8 @@ namespace TTIPApplication.Models
     
         public virtual category category1 { get; set; }
         public virtual CITY CITY1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<photo> photo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<review_> review_ { get; set; }
     }

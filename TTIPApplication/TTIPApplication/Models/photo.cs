@@ -14,8 +14,10 @@ namespace TTIPApplication.Models
     
     public partial class photo
     {
-        public int no { get; set; }
-        public string photo1 { get; set; }
         public int id { get; set; }
+        public string photo_path { get; set; }
+        public int place_id { get; set; }
+    
+        public virtual PLACE PLACE { get; set; }
     }
 }

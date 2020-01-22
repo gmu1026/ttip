@@ -130,9 +130,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\categoriesController.cs" />
+    <Compile Include="Controllers\CITiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\photosController.cs" />
     <Compile Include="Controllers\PlaceController.cs" />
     <Compile Include="Controllers\PLACEsController.cs" />
+    <Compile Include="Controllers\reviewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -335,11 +339,31 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\categories\Create.cshtml" />
+    <Content Include="Views\categories\Delete.cshtml" />
+    <Content Include="Views\categories\Details.cshtml" />
+    <Content Include="Views\categories\Edit.cshtml" />
+    <Content Include="Views\categories\Index.cshtml" />
+    <Content Include="Views\CITies\Create.cshtml" />
+    <Content Include="Views\CITies\Delete.cshtml" />
+    <Content Include="Views\CITies\Details.cshtml" />
+    <Content Include="Views\CITies\Edit.cshtml" />
+    <Content Include="Views\CITies\Index.cshtml" />
     <Content Include="Views\PLACEs\Create.cshtml" />
     <Content Include="Views\PLACEs\Delete.cshtml" />
     <Content Include="Views\PLACEs\Details.cshtml" />
     <Content Include="Views\PLACEs\Edit.cshtml" />
     <Content Include="Views\PLACEs\Index.cshtml" />
+    <Content Include="Views\photos\Create.cshtml" />
+    <Content Include="Views\photos\Delete.cshtml" />
+    <Content Include="Views\photos\Details.cshtml" />
+    <Content Include="Views\photos\Edit.cshtml" />
+    <Content Include="Views\photos\Index.cshtml" />
+    <Content Include="Views\review\Create.cshtml" />
+    <Content Include="Views\review\Delete.cshtml" />
+    <Content Include="Views\review\Details.cshtml" />
+    <Content Include="Views\review\Edit.cshtml" />
+    <Content Include="Views\review\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

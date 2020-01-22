@@ -13,10 +13,10 @@ namespace TTIPApplication.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ttipEntities : DbContext
+    public partial class ttipEntities1 : DbContext
     {
-        public ttipEntities()
-            : base("name=ttipEntities")
+        public ttipEntities1()
+            : base("name=ttipEntities1")
         {
         }
     
@@ -27,8 +27,8 @@ namespace TTIPApplication.Models
     
         public virtual DbSet<category> category { get; set; }
         public virtual DbSet<CITY> CITY { get; set; }
+        public virtual DbSet<photo> photo { get; set; }
         public virtual DbSet<PLACE> PLACE { get; set; }
         public virtual DbSet<review_> review_ { get; set; }
-        public virtual DbSet<photo> photo { get; set; }
     }
 }

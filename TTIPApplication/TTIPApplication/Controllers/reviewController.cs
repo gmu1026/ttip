@@ -10,121 +10,114 @@ using TTIPApplication.Models;
 
 namespace TTIPApplication.Controllers
 {
-    public class PLACEsController : Controller
+    public class reviewController : Controller
     {
         private ttipEntities1 db = new ttipEntities1();
 
-        // GET: PLACEs
+        // GET: review
         public ActionResult Index()
         {
-            var pLACE = db.PLACE.Include(p => p.category1).Include(p => p.CITY1);
-            ViewBag.category = new SelectList(db.category, "category_name", "category_name");
-            ViewBag.CITY = new SelectList(db.CITY, "CITYNAME", "CITYNAME");
-            return View(pLACE.ToList());
+            var review_ = db.review_.Include(r => r.PLACE);
+            return View(review_.ToList());
         }
 
-        // GET: PLACEs/Details/5
+        // GET: review/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PLACE pLACE = db.PLACE.Find(id);
-            ViewBag.reviews = db.review_.Where(r => r.ID == id).ToList();
-            if (pLACE == null)
+            review_ review_ = db.review_.Find(id);
+            if (review_ == null)
             {
                 return HttpNotFound();
             }
-            return View(pLACE);
+            return View(review_);
         }
 
-        // GET: PLACEs/Create
+        // GET: review/Create
         public ActionResult Create()
         {
-            ViewBag.category = new SelectList(db.category, "category_name", "category_name");
-            ViewBag.CITY = new SelectList(db.CITY, "CITYNAME", "CITYNAME");
+            ViewBag.ID = new SelectList(db.PLACE, "ID", "STORE_NAME");
             return View();
         }
 
-        // POST: PLACEs/Create
+        // POST: review/Create
         // 초과 게시 공격으로부터 보호하려면 바인딩하려는 특정 속성을 사용하도록 설정하십시오. 
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,STORE_NAME,CITY,category,place_ex")] PLACE pLACE)
+        public ActionResult Create([Bind(Include = "REVIEW_NUM,ID,WRITER,SCORE,UPDATE_DATE,substance")] review_ review_)
         {
             if (ModelState.IsValid)
             {
-                db.PLACE.Add(pLACE);
+                db.review_.Add(review_);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("~/PLACEs/Details/" + review_.ID);
             }
 
-            ViewBag.category = new SelectList(db.category, "category_name", "category_name", pLACE.category);
-            ViewBag.CITY = new SelectList(db.CITY, "CITYNAME", "CITYNAME", pLACE.CITY);
-            return View(pLACE);
+            ViewBag.ID = new SelectList(db.PLACE, "ID", "STORE_NAME", review_.ID);
+            return View(review_);
         }
 
-        // GET: PLACEs/Edit/5
+        // GET: review/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PLACE pLACE = db.PLACE.Find(id);
-            if (pLACE == null)
+            review_ review_ = db.review_.Find(id);
+            if (review_ == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.category = new SelectList(db.category, "category_name", "category_name", pLACE.category);
-            ViewBag.CITY = new SelectList(db.CITY, "CITYNAME", "CITYNAME", pLACE.CITY);
-            return View(pLACE);
+            ViewBag.ID = new SelectList(db.PLACE, "ID", "STORE_NAME", review_.ID);
+            return View(review_);
         }
 
-        // POST: PLACEs/Edit/5
+        // POST: review/Edit/5
         // 초과 게시 공격으로부터 보호하려면 바인딩하려는 특정 속성을 사용하도록 설정하십시오. 
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,STORE_NAME,CITY,category,place_ex")] PLACE pLACE)
+        public ActionResult Edit([Bind(Include = "REVIEW_NUM,ID,WRITER,SCORE,UPDATE_DATE,substance")] review_ review_)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pLACE).State = EntityState.Modified;
+                db.Entry(review_).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("~/PLACEs/Details/" + review_.ID);
             }
-            ViewBag.category = new SelectList(db.category, "category_name", "category_name", pLACE.category);
-            ViewBag.CITY = new SelectList(db.CITY, "CITYNAME", "CITYNAME", pLACE.CITY);
-            return View(pLACE);
+            ViewBag.ID = new SelectList(db.PLACE, "ID", "STORE_NAME", review_.ID);
+            return View(review_);
         }
 
-        // GET: PLACEs/Delete/5
+        // GET: review/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PLACE pLACE = db.PLACE.Find(id);
-            if (pLACE == null)
+            review_ review_ = db.review_.Find(id);
+            if (review_ == null)
             {
                 return HttpNotFound();
             }
-            return View(pLACE);
+            return View(review_);
         }
 
-        // POST: PLACEs/Delete/5
+        // POST: review/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PLACE pLACE = db.PLACE.Find(id);
-            db.PLACE.Remove(pLACE);
+            review_ review_ = db.review_.Find(id);
+            db.review_.Remove(review_);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Redirect("~/PLACEs/Details/" + review_.ID);
         }
 
         protected override void Dispose(bool disposing)
