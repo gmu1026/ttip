@@ -4,34 +4,35 @@
     ViewBag.Title = "Index";
 }
 
-    <section class="page-section" id="services">
-        <div class="container">
-            <h2 class="text-center mt-0">Search</h2>
-            <hr class="divider my-4">
-            <form action="/Place/Search" method="post">
-                <div class="row">
-                    <div class="col-md-3">
-                        @Html.DropDownList("CITY", null, htmlAttributes: new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-3">
-                        @Html.DropDownList("CATEGORY", null, htmlAttributes: new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-3">
-                        @using (Html.BeginForm())
-                        {
-                            <p>
-                                @Html.TextBox("searchString") <input type="submit" value="Search" />
-                            </p>
-                        }
-                    </div>
-                    <div class="col-md-3">
-                        
+<section class="page-section" id="services">
+    <div class="container">
+        <h2 class="text-center mt-0">Search</h2>
+        <hr class="divider my-4">
+        <form action="/Place/" method="get">
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.DropDownList("CITY", null, htmlAttributes: new { @class = "form-control" })
 
-                    </div>
                 </div>
-            </form>
-        </div>
-    </section>
+                <div class="col-md-3">
+                    @Html.DropDownList("CATEGORY", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="col-md-3">
+                    @using (Html.BeginForm())
+                    {
+                        <p>
+                            @Html.TextBox("searchString") <input type="submit" value="Search" />
+                        </p>
+                    }
+                </div>
+                <div class="col-md-3">
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -87,5 +88,9 @@
             </td>
         </tr>
     }
-
 </table>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
