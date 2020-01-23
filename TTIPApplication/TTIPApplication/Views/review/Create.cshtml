@@ -26,6 +26,22 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(model => model.UPDATE_DATE, htmlAttributes: new { @class = "ml-5" })
+        <div class="ml-5">
+            @Html.EditorFor(model => model.UPDATE_DATE, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+            @Html.ValidationMessageFor(model => model.UPDATE_DATE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.REVIEW_COMMENT, htmlAttributes: new { @class = "ml-5" })
+        <div class="ml-5">
+            @Html.TextAreaFor(model => model.REVIEW_COMMENT, 3, 38, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            @Html.ValidationMessageFor(model => model.REVIEW_COMMENT, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(model => model.SCORE, htmlAttributes: new { @class = "ml-5" })
         <div class="ml-5">
             <div class="rate">
@@ -43,29 +59,14 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.UPDATE_DATE, htmlAttributes: new { @class = "ml-5" })
-        <div class="ml-5">
-            @Html.EditorFor(model => model.UPDATE_DATE, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-            @Html.ValidationMessageFor(model => model.UPDATE_DATE, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.REVIEW_COMMENT, htmlAttributes: new { @class = "ml-5" })
-        <div class="ml-5">
-            @Html.TextAreaFor(model => model.REVIEW_COMMENT, 3, 38, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-            @Html.ValidationMessageFor(model => model.REVIEW_COMMENT, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
+    <br />
     <div class="form-group">
         <div class="row">
-            <div class="col-md-2 text-right">
+            <div class="col-md-20 text-left">
                 <input type="submit" value="Create" class="btn btn-outline-secondary" />
             </div>
-            <div>
-                @Html.ActionLink("Back", "Index", new { id = @ViewBag.placeInfo.ID })
+            <div class="col-md text-left">
+                @Html.ActionLink(" Back", "Index", new { id = @ViewBag.placeInfo.ID })
             </div>
         </div>
     </div>
