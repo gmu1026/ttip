@@ -147,9 +147,6 @@
     <Compile Include="Models\C__RefactorLog.cs">
       <DependentUpon>TTIP_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PHOTO.cs">
-      <DependentUpon>TTIP_DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\PLACE.cs">
       <DependentUpon>TTIP_DB.tt</DependentUpon>
     </Compile>

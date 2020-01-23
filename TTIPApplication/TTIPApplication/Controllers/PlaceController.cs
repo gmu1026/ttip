@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -56,6 +57,19 @@ namespace TTIPApplication.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null 
+                        && file.ContentLength > 0)
+                    {
+                        var fileName = "place_img" + pLACE.ID + "_" + Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/images/"), fileName);
+                        file.SaveAs(path);
+                        pLACE.DETAIL_IMAGE = fileName;
+                    }
+                }
                 db.PLACE.Add(pLACE);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -1,14 +1,11 @@
 ﻿@model TTIPApplication.Models.PLACE
 
-@{
-    ViewBag.Title = "Details";
-}
-
 <h2>Details</h2>
 
 <div>
     <h4>PLACE</h4>
     <hr />
+    <img src="~/images/@Html.DisplayFor(model => model.DETAIL_IMAGE)/" alt="detail_image" style="height : 250px; width:250px;" />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.STORE_NAME)
