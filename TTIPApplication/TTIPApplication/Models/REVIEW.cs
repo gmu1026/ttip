@@ -21,6 +21,7 @@ namespace TTIPApplication.Models
         public Nullable<System.DateTime> UPDATE_DATE { get; set; }
         public string REVIEW_COMMENT { get; set; }
         public string REVIEW_IMAGE { get; set; }
+        
     
         public virtual PLACE PLACE { get; set; }
     }

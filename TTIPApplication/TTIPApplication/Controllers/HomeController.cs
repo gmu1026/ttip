@@ -15,7 +15,8 @@ namespace TTIPApplication.Controllers
 
         public ActionResult Index()
         {
-            var Home = db.PLACE.Include(p => p.CATEGORY1);
+            var Home = db.REVIEW.Include(p => p.PLACE).OrderByDescending(r => r.REVIEW_ID);
+
             return View(Home);
         }
 
