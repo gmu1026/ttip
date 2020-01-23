@@ -1,31 +1,40 @@
 ﻿@model IEnumerable<TTIPApplication.Models.PLACE>
-
-@{
-    ViewBag.Title = "Index";
+@{ViewBag.Title = "Index";
 }
 
-<section class="page-section" id="services">
-    <div class="container">
-        <h2 class="text-center mt-0">Search</h2>
-        <hr class="divider my-4">
-        <form action="/PLACEs/Search" method="post">
-            <div class="row">
-                <div class="col-md-3">
-                    @Html.DropDownList("CITY", null, htmlAttributes: new { @class = "form-control" })
-                </div>
-                <div class="col-md-3">
-                    @Html.DropDownList("category", null, htmlAttributes: new { @class = "form-control" })
-                </div>
-                <div class="col-md-3">
-                    <input type="text" id="store_name" name="store_name" class="form-control" />
-                </div>
-                <div class="col-md-3">
-                    <input type="submit" class="form-control" />
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
+
+    
+        <section class="search_img" id="services">           
+            <div class="container">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <h2 class="text-center text-white"> <i class="fa fa-hashtag fa-1x"></i> Search </h2>
+
+                <hr class="divider my-4">
+                <form action="/PLACEs/Search" method="post">
+                    <br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            @Html.DropDownList("CITY", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.DropDownList("category", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" id="store_name" name="store_name" class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="submit" class="form-control" />
+                        </div>
+                    </div>
+                </form>
+            </div>           
+        </section>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -44,21 +53,21 @@
             @Html.DisplayNameFor(model => model.CITY1.CITYNAME)
         </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.STORE_NAME, "Details", new { id= item.ID })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.place_ex)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.category1.category_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CITY1.CITYNAME)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.STORE_NAME, "Details", new { id = item.ID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.place_ex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category1.category_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CITY1.CITYNAME)
+            </td>
+        </tr>
+    }
 </table>
