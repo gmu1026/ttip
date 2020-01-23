@@ -1,0 +1,79 @@
+﻿@model TTIPApplication.Models.REVIEW
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>REVIEW</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.PID, new { @class = "form-control", @Value = @ViewBag.placeInfo.ID })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.WRITER, htmlAttributes: new { @class = "ml-5" })
+        <div class="ml-5">
+            @Html.EditorFor(model => model.WRITER, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            @Html.ValidationMessageFor(model => model.WRITER, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UPDATE_DATE, htmlAttributes: new { @class = "ml-5" })
+        <div class="ml-5">
+            @Html.EditorFor(model => model.UPDATE_DATE, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+            @Html.ValidationMessageFor(model => model.UPDATE_DATE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.REVIEW_COMMENT, htmlAttributes: new { @class = "ml-5" })
+        <div class="ml-5">
+            @Html.TextAreaFor(model => model.REVIEW_COMMENT, 3, 38, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            @Html.ValidationMessageFor(model => model.REVIEW_COMMENT, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SCORE, htmlAttributes: new { @class = "ml-5" })
+        <div class="ml-5">
+            <div class="rate">
+                <input type="radio" id="star5" name="SCORE" value="5" />
+                @Html.Label("star5", "star5")
+                <input type="radio" id="star4" name="SCORE" value="4" />
+                @Html.Label("star4", "star4")
+                <input type="radio" id="star3" name="SCORE" value="3" />
+                @Html.Label("star3", "star3")
+                <input type="radio" id="star2" name="SCORE" value="2" />
+                @Html.Label("star2", "star2")
+                <input type="radio" id="star1" name="SCORE" value="1" />
+                @Html.Label("star1", "star1")
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-20 text-left">
+                <input type="submit" value="Create" class="btn btn-outline-secondary" />
+            </div>
+            <div class="col-md text-left">
+                @Html.ActionLink(" Back", "Index", new { id = @ViewBag.placeInfo.ID })
+            </div>
+        </div>
+    </div>
+    <hr />
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

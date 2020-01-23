@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b295670afbd04d04b12b5580b7718af2" Name="Diagram1">
+        <EntityTypeShape EntityType="TTIP_DBModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTIP_DBModel.CATEGORY" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTIP_DBModel.CITY" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTIP_DBModel.PHOTO" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTIP_DBModel.PLACE" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TTIP_DBModel.REVIEW" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="TTIP_DBModel.FK_PLACE_CATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="TTIP_DBModel.FK_PLACE_CITY" ManuallyRouted="false" />
+        <AssociationConnector Association="TTIP_DBModel.FK_PHOTO_PLACE1" ManuallyRouted="false" />
+        <AssociationConnector Association="TTIP_DBModel.FK_REVIEW_PLACE1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
