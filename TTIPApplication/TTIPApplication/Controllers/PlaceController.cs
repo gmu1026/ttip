@@ -31,16 +31,7 @@ namespace TTIPApplication.Controllers
             }
             return View(pLACE);
         }
-        //search
-        public ActionResult Search(string searchString)
-        {
-            var store = from s in db.PLACE select s;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                store = store.Where(s => s.STORE_NAME.Contains(searchString));
-            }
-            return View(store);
-        }
+
         // GET: Place/Details/5
         public ActionResult Details(int? id)
         {
