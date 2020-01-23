@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7e1df514882c4dcbb877a911b43252fb" Name="Diagram1">
-        <EntityTypeShape EntityType="TTIP_DBModel.C__RefactorLog" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TTIP_DBModel.CATEGORY" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TTIP_DBModel.CITY" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TTIP_DBModel.PLACE" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />

@@ -4,13 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TTIP_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="__RefactorLog">
-          <Key>
-            <PropertyRef Name="OperationKey" />
-          </Key>
-          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
+    <Schema Namespace="TTIP_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CATEGORY">
           <Key>
             <PropertyRef Name="CATEGORY_NAME" />
@@ -45,9 +39,12 @@
           <Property Name="SCORE" Type="int" />
           <Property Name="UPDATE_DATE" Type="date" />
           <Property Name="REVIEW_COMMENT" Type="varchar(max)" Nullable="false" />
+          <Property Name="REVIEW_IMAGE" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_PLACE_CATEGORY">
-          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PLACE" Type="Self.PLACE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CATEGORY">
@@ -59,7 +56,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PLACE_CITY">
-          <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PLACE" Type="Self.PLACE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CITY">
@@ -71,7 +70,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_REVIEW_PLACE1">
-          <End Role="PLACE" Type="Self.PLACE" Multiplicity="1" />
+          <End Role="PLACE" Type="Self.PLACE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PLACE">
@@ -83,7 +84,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TTIP_DBModelStoreContainer">
-          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CITY" EntityType="Self.CITY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PLACE" EntityType="Self.PLACE" Schema="dbo" store:Type="Tables" />
@@ -101,17 +101,10 @@
             <End Role="REVIEW" EntitySet="REVIEW" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TTIP_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="C__RefactorLog">
-          <Key>
-            <PropertyRef Name="OperationKey" />
-          </Key>
-          <Property Name="OperationKey" Type="Guid" Nullable="false" />
-        </EntityType>
         <EntityType Name="CATEGORY">
           <Key>
             <PropertyRef Name="CATEGORY_NAME" />
@@ -152,6 +145,7 @@
           <Property Name="UPDATE_DATE" Type="DateTime" Precision="0" />
           <Property Name="REVIEW_COMMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="PLACE" Relationship="Self.FK_REVIEW_PLACE1" FromRole="REVIEW" ToRole="PLACE" />
+          <Property Name="REVIEW_IMAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_PLACE_CATEGORY">
           <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
@@ -190,7 +184,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TTIP_DBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
           <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" />
           <EntitySet Name="CITY" EntityType="Self.CITY" />
           <EntitySet Name="PLACE" EntityType="Self.PLACE" />
@@ -214,13 +207,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TTIP_DBModelStoreContainer" CdmEntityContainer="TTIP_DBEntities">
-          <EntitySetMapping Name="C__RefactorLog">
-            <EntityTypeMapping TypeName="TTIP_DBModel.C__RefactorLog">
-              <MappingFragment StoreEntitySet="__RefactorLog">
-                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CATEGORY">
             <EntityTypeMapping TypeName="TTIP_DBModel.CATEGORY">
               <MappingFragment StoreEntitySet="CATEGORY">
@@ -251,6 +237,7 @@
           <EntitySetMapping Name="REVIEW">
             <EntityTypeMapping TypeName="TTIP_DBModel.REVIEW">
               <MappingFragment StoreEntitySet="REVIEW">
+                <ScalarProperty Name="REVIEW_IMAGE" ColumnName="REVIEW_IMAGE" />
                 <ScalarProperty Name="REVIEW_ID" ColumnName="REVIEW_ID" />
                 <ScalarProperty Name="PID" ColumnName="PID" />
                 <ScalarProperty Name="WRITER" ColumnName="WRITER" />

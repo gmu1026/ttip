@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -48,13 +49,26 @@ namespace TTIPApplication.Controllers
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "REVIEW_ID,PID,WRITER,SCORE,UPDATE_DATE,REVIEW_COMMENT")] REVIEW rEVIEW)
+        public ActionResult Create([Bind(Include = "REVIEW_ID,PID,WRITER,SCORE,UPDATE_DATE,REVIEW_COMMENT,REVIEW_IMAGE")] REVIEW rEVIEW)
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null
+                        && file.ContentLength > 0)
+                    {
+                        var fileName = "review_img_" + rEVIEW.REVIEW_ID + "_" + Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/images/"), fileName);
+                        file.SaveAs(path);
+                        rEVIEW.REVIEW_IMAGE = fileName;
+                    }
+                }
                 db.REVIEW.Add(rEVIEW);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("~/Place/Details/" + rEVIEW.PID);
             }
 
             ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", rEVIEW.PID);
@@ -88,7 +102,7 @@ namespace TTIPApplication.Controllers
             {
                 db.Entry(rEVIEW).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("~/Place/Details/" + rEVIEW.PID);
             }
             ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", rEVIEW.PID);
             return View(rEVIEW);
@@ -117,7 +131,7 @@ namespace TTIPApplication.Controllers
             REVIEW rEVIEW = db.REVIEW.Find(id);
             db.REVIEW.Remove(rEVIEW);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Redirect("~/Place/Details/" + rEVIEW.PID);
         }
 
         protected override void Dispose(bool disposing)

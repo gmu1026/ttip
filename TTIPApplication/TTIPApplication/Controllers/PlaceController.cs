@@ -32,7 +32,7 @@ namespace TTIPApplication.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PLACE pLACE = db.PLACE.Find(id);
-            ViewBag.reviews = db.REVIEW.Where(r => r.REVIEW_ID == id).ToList();
+            ViewBag.reviews = db.REVIEW.Where(r => r.PID == id).ToList();
             if (pLACE == null)
             {
                 return HttpNotFound();
@@ -64,7 +64,7 @@ namespace TTIPApplication.Controllers
                     if (file != null 
                         && file.ContentLength > 0)
                     {
-                        var fileName = "place_img" + pLACE.ID + "_" + Path.GetFileName(file.FileName);
+                        var fileName = "place_img_" + pLACE.ID + "_" + Path.GetFileName(file.FileName);
                         var path = Path.Combine(Server.MapPath("~/images/"), fileName);
                         file.SaveAs(path);
                         pLACE.DETAIL_IMAGE = fileName;
