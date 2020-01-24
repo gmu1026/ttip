@@ -101,7 +101,7 @@ namespace TTIPApplication.Controllers
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "REVIEW_ID,PID,WRITER,SCORE,UPDATE_DATE,REVIEW_COMMENT")] REVIEW review)
+        public ActionResult Edit([Bind(Include = "REVIEW_ID,PID,WRITER,SCORE,UPDATE_DATE,REVIEW_COMMENT,REVIEW_IMAGE")] REVIEW review)
         {
             if (ModelState.IsValid)
             {
