@@ -41,12 +41,11 @@ namespace TTIPApplication.Controllers
         }
 
         // GET: Review/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            var pid = Convert.ToInt32(Request.Url.AbsoluteUri.Substring(Request.Url.AbsoluteUri.LastIndexOf("/") + 1));
-            ViewBag.placeInfo = db.PLACE.Find(pid);
+            
+            ViewBag.placeInfo = db.PLACE.Find(id);
 
-            ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME");
             return View();
         }
 
@@ -77,7 +76,7 @@ namespace TTIPApplication.Controllers
                 return Redirect("~/Place/Details/" + rEVIEW.PID);
             }
 
-            return View(review);
+            return View(rEVIEW);
         }
 
         // GET: Review/Edit/5
@@ -108,7 +107,7 @@ namespace TTIPApplication.Controllers
             {
                 db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
-                return Redirect("~/Place/Details/" + rEVIEW.PID);
+                return Redirect("~/Place/Details/" + review.PID);
             }
             ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", review.PID);
             return View(review);
@@ -127,19 +126,14 @@ namespace TTIPApplication.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.placeInfo = db.PLACE.Find(review.PID);
-            return View(review);
-        }
-
-        // POST: Review/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            REVIEW review = db.REVIEW.Find(id);
+            if (review.REVIEW_IMAGE != null)
+            {
+                var image_path = Path.Combine(Server.MapPath("~/images/"), review.REVIEW_IMAGE);
+                System.IO.File.Delete(image_path);
+            }
             db.REVIEW.Remove(review);
             db.SaveChanges();
-            return Redirect("~/Place/Details/" + rEVIEW.PID);
+            return Redirect("~/Place/Details/" + review.PID);
         }
 
         protected override void Dispose(bool disposing)

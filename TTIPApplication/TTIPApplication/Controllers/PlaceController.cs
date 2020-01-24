@@ -145,6 +145,12 @@ namespace TTIPApplication.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             PLACE pLACE = db.PLACE.Find(id);
+            if (pLACE.DETAIL_IMAGE != null)
+            {
+                var image_path = Path.Combine(Server.MapPath("~/images/"), pLACE.DETAIL_IMAGE);
+                System.IO.File.Delete(image_path);
+            }
+
             db.PLACE.Remove(pLACE);
             db.SaveChanges();
             return RedirectToAction("Index");

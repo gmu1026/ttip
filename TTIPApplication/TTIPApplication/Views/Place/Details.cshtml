@@ -50,7 +50,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Add Review", "Create", "Review") |
+    @Html.ActionLink("Add Review", "Create", "Review", new { id= Model.ID }, null) |
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
@@ -96,8 +96,8 @@
                         @item.UPDATE_DATE
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", "review", new { id = item.REVIEW_ID }, null) |
-                        @Html.ActionLink("Delete", "Delete", "review", new { id = item.REVIEW_ID }, null)
+                        @Html.ActionLink("Edit", "Edit", "Review", new { id = item.REVIEW_ID }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Review", new { id = item.REVIEW_ID }, null)
                     </td>
                 </tr>
             }

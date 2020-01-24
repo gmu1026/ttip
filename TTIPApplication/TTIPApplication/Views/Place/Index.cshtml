@@ -4,35 +4,39 @@
     ViewBag.Title = "Index";
 }
 
-<section class="page-section" id="services">
-    <div class="container">
-        <h2 class="text-center mt-0">Search</h2>
-        <hr class="divider my-4">
-        <form action="/Place/" method="post">
-            <div class="row">
-                <div class="col-md-3">
-                    @Html.DropDownList("CITY", null, htmlAttributes: new { @class = "form-control" })
+    <section class="search_img" id="services">
+        <div class="container">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h2 class="text-center text-white"> <i class="fa fa-hashtag fa-1x"></i> Search </h2>
+            <hr class="divider my-4">
+            <form action="/Place/" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DropDownList("CITY", null, htmlAttributes: new { @class = "form-control" })
 
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownList("CATEGORY", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        @using (Html.BeginForm())
+                        {
+                            <p>
+                                @Html.TextBox("searchString", null, htmlAttributes : new{ @class= "form-control" })
+                            </p>
+                        }
+                    </div>
+                    <div class="col-md-3">
+                        <input type="submit" class="form-control" value="Search" />
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    @Html.DropDownList("CATEGORY", null, htmlAttributes: new { @class = "form-control" })
-                </div>
-                <div class="col-md-3">
-                    @using (Html.BeginForm())
-                    {
-                        <p>
-                            @Html.TextBox("searchString") <input type="submit" value="Search" />
-                        </p>
-                    }
-                </div>
-                <div class="col-md-3">
-
-
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
+            </form>
+        </div>
+    </section>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -63,11 +67,19 @@
     {
 
 <tr>
-    <td>
-        <a href="/Place/Details/@item.ID">
-            <img src="~/images/@item.DETAIL_IMAGE" alt="detail_image" style="height : 150px; width:150px;" />
-        </a>
-    </td>
+    @{ 
+        if (item.DETAIL_IMAGE != null)
+        {
+        <td>
+            <a href="/Place/Details/@item.ID">
+                <img src="~/images/@item.DETAIL_IMAGE" alt="detail_image" style="height : 150px; width:150px;" />
+            </a>
+        </td>
+        } else
+        {
+            <td></td>
+        }
+    }
     <td>
         @Html.ActionLink(item.STORE_NAME, "Details", new { id = item.ID })
     </td>
