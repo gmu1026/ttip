@@ -105,9 +105,6 @@ namespace TTIPApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(review).State = EntityState.Modified;
-                db.SaveChanges();
-
                 if (Request.Files.Count > 0)
                 {
                     var file = Request.Files[0];
@@ -120,7 +117,14 @@ namespace TTIPApplication.Controllers
                         file.SaveAs(path);
                         review.REVIEW_IMAGE = fileName;
                     }
+                } else
+                {
+                    var old_review = db.REVIEW.Find(review.REVIEW_ID);
+                    review.REVIEW_IMAGE = old_review.REVIEW_IMAGE;
                 }
+                db.Entry(review).State = EntityState.Modified;
+                db.SaveChanges();
+
                 return Redirect("~/Place/Details/" + review.PID);
             }
             ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", review.PID);

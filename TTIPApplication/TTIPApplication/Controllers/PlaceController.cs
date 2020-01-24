@@ -16,12 +16,24 @@ namespace TTIPApplication.Controllers
         private TTIP_DBEntities db = new TTIP_DBEntities();
 
         // GET: Place
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString , string sortOrder)
         {
             var pLACE = db.PLACE.Include(p => p.CATEGORY1).Include(p => p.CITY1);
             ViewBag.CATEGORY = new SelectList(db.CATEGORY, "CATEGORY_NAME", "CATEGORY_NAME");
             ViewBag.CITY = new SelectList(db.CITY, "CITY_NAME", "CITY_NAME");
-            
+
+            ViewBag.StoreNameSort = String.IsNullOrEmpty(sortOrder) ? "name" : "";
+
+            switch (sortOrder)
+            {
+                case "name":
+                    pLACE = pLACE.OrderBy(s => s.STORE_NAME);
+                    break;
+                default:
+                    pLACE = pLACE.OrderByDescending(s => s.STORE_NAME);
+                    break;
+            }
+
             if(!String.IsNullOrEmpty(searchString))
             {
                 ViewBag.CATEGORY = new SelectList(db.CATEGORY, "CATEGORY_NAME", "CATEGORY_NAME");
@@ -30,22 +42,41 @@ namespace TTIPApplication.Controllers
                 store = store.Where(s => s.STORE_NAME.Contains(searchString));
                 return View(store);
             }
-            return View(pLACE);
+            return View(pLACE.ToList());
         }
 
         // GET: Place/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, string sortOrder)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PLACE pLACE = db.PLACE.Find(id);
-            ViewBag.reviews = db.REVIEW.Where(r => r.PID == id).ToList();
+            var reviews = db.REVIEW.Where(r => r.PID == id);
             if (pLACE == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.ScoreSort = String.IsNullOrEmpty(sortOrder) ? "score_desc" : "";
+            ViewBag.DateSort = sortOrder == "date" ? "date_desc" : "date";
+
+            switch (sortOrder)
+            {
+                case "score_desc":
+                    reviews = reviews.OrderBy(s => s.SCORE);
+                    break;
+                case "date":
+                    reviews = reviews.OrderBy(s => s.UPDATE_DATE);
+                    break;
+                case "date_desc":
+                    reviews = reviews.OrderByDescending(s => s.UPDATE_DATE);
+                    break;
+                default:
+                    reviews = reviews.OrderByDescending(s => s.SCORE);
+                    break;
+            }
+            ViewBag.reviews  = reviews.ToList();
             return View(pLACE);
         }
 
@@ -115,6 +146,19 @@ namespace TTIPApplication.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null
+                        && file.ContentLength > 0)
+                    {
+                        var fileName = "place_img_" + pLACE.ID + "_" + Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/images/"), fileName);
+                        file.SaveAs(path);
+                        pLACE.DETAIL_IMAGE = fileName;
+                    }
+                }
                 db.Entry(pLACE).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

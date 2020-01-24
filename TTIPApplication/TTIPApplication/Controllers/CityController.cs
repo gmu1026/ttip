@@ -52,7 +52,7 @@ namespace TTIPApplication.Controllers
             {
                 db.CITY.Add(cITY);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("~/Place");
             }
 
             return View(cITY);

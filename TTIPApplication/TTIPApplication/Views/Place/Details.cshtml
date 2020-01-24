@@ -1,7 +1,6 @@
 ﻿@model TTIPApplication.Models.PLACE
 
-<h2>Details</h2>
-
+<section class="create_img"></section>
 <div>
     <h4>PLACE</h4>
     <hr />
@@ -67,13 +66,13 @@
                     WRITER
                 </th>
                 <th>
-                    SCORE
+                    @Html.ActionLink("SCORE","Details",new { sortOrder = ViewBag.ScoreSort})
                 </th>
                 <th>
                     COMMENT
                 </th>
                 <th>
-                    REGISTED DATE
+                    @Html.ActionLink("REGISTER_DATE", "Details", new { sortOrder = ViewBag.DateSort })
                 </th>
                 <th></th>
             </tr>
@@ -81,7 +80,14 @@
             {
                 <tr>
                     <td>
-                        <img src="~/images/@item.REVIEW_IMAGE" alt="detail_image" onerror="this.onerror = null;this.src = '/images/404.png';" style="height : 150px; width:150px;" />
+                        @if (item.REVIEW_IMAGE != null)
+                        {
+                            <img src="~/images/@item.REVIEW_IMAGE" alt="detail_image" style="height : 150px; width:150px;" />
+                        }
+                        else
+                        {
+                            <img src="~/images/404.png" alt="detail_image" style="height : 150px; width:150px;" />
+                        }
                     </td>
                     <td>
                         @item.WRITER

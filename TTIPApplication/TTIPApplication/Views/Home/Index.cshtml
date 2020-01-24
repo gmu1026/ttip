@@ -67,7 +67,14 @@
                 if (i > 5) { break; }
                 <div class="col-lg-4 col-sm-6">
                     <a class="portfolio-box" href="/Place/Details/@item.PID ">
-                        <img class="img-fluid" src="~/images/@item.REVIEW_IMAGE" style="width : 650px; height : 250px;">
+                        @if (item.REVIEW_IMAGE != null)
+                        {
+                            <img class="img-fluid" src="~/images/@item.REVIEW_IMAGE" style="width : 650px; height : 250px;">
+                        }
+                        else
+                        {
+                            <img class="img-fluid" src="~/images/404.png" style="width : 650px; height : 250px;">
+                        }
                         <div class="portfolio-box-caption">
                             <div class="project-category text-white-50">
                                 @Html.DisplayFor(modelitem => item.PLACE.CATEGORY)
