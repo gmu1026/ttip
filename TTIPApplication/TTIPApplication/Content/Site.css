@@ -35,3 +35,13 @@ textarea {
     width: 100%;
     height: 500px;
 }
+
+.create_img {
+    padding-top: 0px;
+    padding-bottom: 50px;
+    margin-bottom: 0px;
+    background-image: url("../image/cr_bg2.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 75px;
+}
