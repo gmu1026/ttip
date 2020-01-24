@@ -18,8 +18,11 @@ namespace TTIPApplication.Controllers
         // GET: Review
         public ActionResult Index()
         {
-            var rEVIEW = db.REVIEW.Include(r => r.PLACE);
-            return View(rEVIEW.ToList());
+            var pid = Convert.ToInt32(Request.Url.AbsoluteUri.Substring(Request.Url.AbsoluteUri.LastIndexOf("/") + 1));
+            ViewBag.placeInfo = db.PLACE.Find(pid);
+
+            var review = db.REVIEW.Include(r => r.PLACE);
+            return View(review.ToList());
         }
 
         // GET: Review/Details/5
@@ -40,6 +43,9 @@ namespace TTIPApplication.Controllers
         // GET: Review/Create
         public ActionResult Create()
         {
+            var pid = Convert.ToInt32(Request.Url.AbsoluteUri.Substring(Request.Url.AbsoluteUri.LastIndexOf("/") + 1));
+            ViewBag.placeInfo = db.PLACE.Find(pid);
+
             ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME");
             return View();
         }
@@ -71,8 +77,7 @@ namespace TTIPApplication.Controllers
                 return Redirect("~/Place/Details/" + rEVIEW.PID);
             }
 
-            ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", rEVIEW.PID);
-            return View(rEVIEW);
+            return View(review);
         }
 
         // GET: Review/Edit/5
@@ -82,13 +87,14 @@ namespace TTIPApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            REVIEW rEVIEW = db.REVIEW.Find(id);
-            if (rEVIEW == null)
+            REVIEW review = db.REVIEW.Find(id);
+            if (review == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", rEVIEW.PID);
-            return View(rEVIEW);
+
+            ViewBag.placeInfo = db.PLACE.Find(review.PID);
+            return View(review);
         }
 
         // POST: Review/Edit/5
@@ -96,16 +102,16 @@ namespace TTIPApplication.Controllers
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "REVIEW_ID,PID,WRITER,SCORE,UPDATE_DATE,REVIEW_COMMENT")] REVIEW rEVIEW)
+        public ActionResult Edit([Bind(Include = "REVIEW_ID,PID,WRITER,SCORE,UPDATE_DATE,REVIEW_COMMENT")] REVIEW review)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rEVIEW).State = EntityState.Modified;
+                db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
                 return Redirect("~/Place/Details/" + rEVIEW.PID);
             }
-            ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", rEVIEW.PID);
-            return View(rEVIEW);
+            ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", review.PID);
+            return View(review);
         }
 
         // GET: Review/Delete/5
@@ -115,12 +121,14 @@ namespace TTIPApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            REVIEW rEVIEW = db.REVIEW.Find(id);
-            if (rEVIEW == null)
+            REVIEW review = db.REVIEW.Find(id);
+            if (review == null)
             {
                 return HttpNotFound();
             }
-            return View(rEVIEW);
+
+            ViewBag.placeInfo = db.PLACE.Find(review.PID);
+            return View(review);
         }
 
         // POST: Review/Delete/5
@@ -128,8 +136,8 @@ namespace TTIPApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            REVIEW rEVIEW = db.REVIEW.Find(id);
-            db.REVIEW.Remove(rEVIEW);
+            REVIEW review = db.REVIEW.Find(id);
+            db.REVIEW.Remove(review);
             db.SaveChanges();
             return Redirect("~/Place/Details/" + rEVIEW.PID);
         }
