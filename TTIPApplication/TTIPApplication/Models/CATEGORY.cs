@@ -12,17 +12,17 @@ namespace TTIPApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class REVIEW
+    public partial class CATEGORY
     {
-        public int REVIEW_ID { get; set; }
-        public int PID { get; set; }
-        public string WRITER { get; set; }
-        public Nullable<int> SCORE { get; set; }
-        public Nullable<System.DateTime> UPDATE_DATE { get; set; }
-        public string REVIEW_COMMENT { get; set; }
-        public string REVIEW_IMAGE { get; set; }
-        
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CATEGORY()
+        {
+            this.PLACE = new HashSet<PLACE>();
+        }
     
-        public virtual PLACE PLACE { get; set; }
+        public string CATEGORY_NAME { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PLACE> PLACE { get; set; }
     }
 }

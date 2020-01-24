@@ -16,12 +16,21 @@ namespace TTIPApplication.Controllers
         private TTIP_DBEntities db = new TTIP_DBEntities();
 
         // GET: Place
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var pLACE = db.PLACE.Include(p => p.CATEGORY1).Include(p => p.CITY1); 
+            var pLACE = db.PLACE.Include(p => p.CATEGORY1).Include(p => p.CITY1);
             ViewBag.CATEGORY = new SelectList(db.CATEGORY, "CATEGORY_NAME", "CATEGORY_NAME");
             ViewBag.CITY = new SelectList(db.CITY, "CITY_NAME", "CITY_NAME");
-            return View(pLACE.ToList());
+            
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                ViewBag.CATEGORY = new SelectList(db.CATEGORY, "CATEGORY_NAME", "CATEGORY_NAME");
+                ViewBag.CITY = new SelectList(db.CITY, "CITY_NAME", "CITY_NAME");
+                var store = from s in db.PLACE select s;
+                store = store.Where(s => s.STORE_NAME.Contains(searchString));
+                return View(store);
+            }
+            return View(pLACE);
         }
 
         // GET: Place/Details/5
