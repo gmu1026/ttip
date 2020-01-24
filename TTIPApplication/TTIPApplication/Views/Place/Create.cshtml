@@ -3,7 +3,15 @@
 @{
     ViewBag.Title = "Create";
 }
-
+<section class="create_img"></section>
+              <section>
+        <div class="container_test">
+          <br>
+            <br>
+            <h2 class="text-center text-black"> <i class="fa fa-plus-circle fa-1x"></i> Create </h2>
+            <hr class="divider my-4">
+            <div class="card w-100">
+                <br />
 @using (Html.BeginForm("Create", "Place", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -15,7 +23,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.STORE_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.STORE_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.STORE_NAME, new { htmlAttributes = new { @class = "form-control", @placeholder="Place", @style="margin-left: 35px;" } })
                 @Html.ValidationMessageFor(model => model.STORE_NAME, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -23,7 +31,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CITY, "CITY", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CITY", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("CITY", null, htmlAttributes: new { @class = "form-control", @style="margin-left: 35px;" })
                 @Html.ValidationMessageFor(model => model.CITY, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -31,7 +39,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CATEGORY, "CATEGORY", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CATEGORY", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("CATEGORY", null, htmlAttributes: new { @class = "form-control", @style="margin-left: 35px;" })
                 @Html.ValidationMessageFor(model => model.CATEGORY, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -39,39 +47,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EXPLANATION, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EXPLANATION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EXPLANATION, new { htmlAttributes = new { @class = "form-control", @style="margin-left: 35px;" } })
                 @Html.ValidationMessageFor(model => model.EXPLANATION, "", new { @class = "text-danger" })
+
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DETAIL_IMAGE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="upload_image" />
-                @Html.ValidationMessageFor(model => model.DETAIL_IMAGE, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</section>
