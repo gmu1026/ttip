@@ -11,13 +11,15 @@ namespace TTIPApplication.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class REVIEW
     {
         public int REVIEW_ID { get; set; }
         public int PID { get; set; }
         public string WRITER { get; set; }
         public Nullable<int> SCORE { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> UPDATE_DATE { get; set; }
         public string REVIEW_COMMENT { get; set; }
         public string REVIEW_IMAGE { get; set; }

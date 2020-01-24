@@ -107,6 +107,20 @@ namespace TTIPApplication.Controllers
             {
                 db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
+
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null
+                        && file.ContentLength > 0)
+                    {
+                        var fileName = "review_img_" + review.REVIEW_ID + "_" + Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/images/"), fileName);
+                        file.SaveAs(path);
+                        review.REVIEW_IMAGE = fileName;
+                    }
+                }
                 return Redirect("~/Place/Details/" + review.PID);
             }
             ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", review.PID);
