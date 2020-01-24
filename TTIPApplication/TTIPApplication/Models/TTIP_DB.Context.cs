@@ -25,10 +25,8 @@ namespace TTIPApplication.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<CATEGORY> CATEGORY { get; set; }
         public virtual DbSet<CITY> CITY { get; set; }
-        public virtual DbSet<PHOTO> PHOTO { get; set; }
         public virtual DbSet<PLACE> PLACE { get; set; }
         public virtual DbSet<REVIEW> REVIEW { get; set; }
     }

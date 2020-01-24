@@ -33,6 +33,9 @@
 <table class="table">
     <tr>
         <th>
+            thumnail
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.STORE_NAME)
         </th>
         <th>
@@ -42,44 +45,38 @@
             @Html.DisplayNameFor(model => model.ADDRESS)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DETAIL_IMAGE)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CATEGORY1.CATEGORY_NAME)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CITY1.CITY_NAME)
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.STORE_NAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EXPLANATION)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ADDRESS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DETAIL_IMAGE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CATEGORY1.CATEGORY_NAME)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CITY1.CITY_NAME)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Review Details", "../Review/Index", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
+
+<tr>
+    <td>
+        <a href="/Place/Details/@item.ID">
+            <img src="~/images/@item.DETAIL_IMAGE" alt="detail_image" style="height : 150px; width:150px;" />
+        </a>
+    </td>
+    <td>
+        @Html.ActionLink(item.STORE_NAME, "Details", new { id = item.ID })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EXPLANATION)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ADDRESS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CATEGORY1.CATEGORY_NAME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CITY1.CITY_NAME)
+    </td>
+</tr>
     }
 
 </table>

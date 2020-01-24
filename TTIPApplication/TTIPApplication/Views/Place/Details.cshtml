@@ -1,14 +1,11 @@
 ﻿@model TTIPApplication.Models.PLACE
 
-@{
-    ViewBag.Title = "Details";
-}
-
 <h2>Details</h2>
 
 <div>
     <h4>PLACE</h4>
     <hr />
+    <img src="~/images/@Html.DisplayFor(model => model.DETAIL_IMAGE)" alt="detail_image" style="height : 250px; width:250px;" />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.STORE_NAME)
@@ -35,14 +32,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DETAIL_IMAGE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DETAIL_IMAGE)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.CATEGORY1.CATEGORY_NAME)
         </dt>
 
@@ -61,6 +50,57 @@
     </dl>
 </div>
 <p>
+    @Html.ActionLink("Add Review", "Create", "Review") |
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<section class="page-section" id="services">
+    <div class="container">
+        <h2 class="text-center mt-0">REVIEWS</h2>
+        <hr class="divider my-4">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>
+                    WRITER
+                </th>
+                <th>
+                    SCORE
+                </th>
+                <th>
+                    COMMENT
+                </th>
+                <th>
+                    REGISTED DATE
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in ViewBag.reviews)
+            {
+                <tr>
+                    <td>
+                        <img src="~/images/@item.REVIEW_IMAGE" alt="detail_image" onerror="this.onerror = null;this.src = '/images/404.png';" style="height : 150px; width:150px;" />
+                    </td>
+                    <td>
+                        @item.WRITER
+                    </td>
+                    <td>
+                        @item.SCORE
+                    </td>
+                    <td>
+                        @item.REVIEW_COMMENT
+                    </td>
+                    <td>
+                        @item.UPDATE_DATE
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "review", new { id = item.REVIEW_ID }, null) |
+                        @Html.ActionLink("Delete", "Delete", "review", new { id = item.REVIEW_ID }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</section>

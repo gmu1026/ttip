@@ -6,34 +6,36 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Review", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
-
+    
 <div class="form-horizontal">
     <h4>REVIEW</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-    @Html.HiddenFor(model => model.PID, new { @class = "form-control", @Value = @ViewBag.placeInfo.ID })
+    <div class="form-group">
+        @Html.LabelFor(model => model.PID, "PLACE", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PID, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.WRITER, htmlAttributes: new { @class = "ml-5" })
-        <div class="ml-5">
-            @Html.EditorFor(model => model.WRITER, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+        @Html.LabelFor(model => model.WRITER, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.WRITER, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.WRITER, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.UPDATE_DATE, htmlAttributes: new { @class = "ml-5" })
-        <div class="ml-5">
-            @Html.EditorFor(model => model.UPDATE_DATE, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+        @Html.LabelFor(model => model.UPDATE_DATE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UPDATE_DATE, new { htmlAttributes = new { @class = "form-control" @type = "date" } })
             @Html.ValidationMessageFor(model => model.UPDATE_DATE, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
         @Html.LabelFor(model => model.REVIEW_COMMENT, htmlAttributes: new { @class = "ml-5" })
         <div class="ml-5">
             @Html.TextAreaFor(model => model.REVIEW_COMMENT, 3, 38, new { htmlAttributes = new { @class = "form-control", required = "required" } })
@@ -42,6 +44,23 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(model => model.REVIEW_IMAGE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="upload_image" />
+            @Html.ValidationMessageFor(model => model.REVIEW_IMAGE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    
         @Html.LabelFor(model => model.SCORE, htmlAttributes: new { @class = "ml-5" })
         <div class="ml-5">
             <div class="rate">
