@@ -16,17 +16,17 @@ Trip + tip
 
 ### How to use
 
-> 1.You can see the latest reviews on the website and Click on the "Search More" button if you want to see more. <br>
+1. You can see the latest reviews on the website and Click on the "Search More" button if you want to see more. <br>
 
-> 2.Select 'City,Category' and type a place name and click the search button. <br>
+2. Select 'City,Category' and type a place name and click the search button. <br>
 
-> 3.A list of locations is displayed, and clicking the Detail button comes up with a detailed page about the location. <br>
+3. A list of locations is displayed, and clicking the Detail button comes up with a detailed page about the location. <br>
 
-> 4.On the Details page, you can see the store image, store name and address, brief description and review. <br>
+4. On the Details page, you can see the store image, store name and address, brief description and review. <br>
 
-> 5.Click the "Add Review" button to go to the review registration page. <br>
+5. Click the "Add Review" button to go to the review registration page. <br>
 
-> 6.You can edit or delete a registered review. <br>
+6. You can edit or delete a registered review. <br>
 </hr>
 
 ## Development environment
