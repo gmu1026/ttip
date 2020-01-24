@@ -136,7 +136,15 @@ namespace TTIPApplication.Controllers
             {
                 return HttpNotFound();
             }
-            return View(pLACE);
+            if (pLACE.DETAIL_IMAGE != null)
+            {
+                var image_path = Path.Combine(Server.MapPath("~/images/"), pLACE.DETAIL_IMAGE);
+                System.IO.File.Delete(image_path);
+            }
+
+            db.PLACE.Remove(pLACE);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: Place/Delete/5

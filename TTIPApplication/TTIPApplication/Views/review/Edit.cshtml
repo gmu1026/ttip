@@ -16,6 +16,7 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.REVIEW_ID)
+    @Html.HiddenFor(model => model.PID)
 
     <div class="form-group">
         @Html.LabelFor(model => model.WRITER, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -61,7 +62,7 @@
 
     <div class="form-group">
         <div class="ml-5">
-            <input type="file" class="form-control-file" name="upload_imamge" value=@Model.REVIEW_IMAGE/>
+            <input type="file" class="form-control-file" name="upload_imamge" value=@Model.REVIEW_IMAGE />
         </div>
     </div>
 

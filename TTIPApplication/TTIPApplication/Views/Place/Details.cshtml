@@ -93,7 +93,7 @@
                         @item.REVIEW_COMMENT
                     </td>
                     <td>
-                        @item.UPDATE_DATE
+                        @item.UPDATE_DATE.ToString("yyyy/MMM/dd")
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", "Review", new { id = item.REVIEW_ID }, null) |

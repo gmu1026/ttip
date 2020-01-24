@@ -13,12 +13,11 @@
                 <p class="text-white-75 font-weight-light mb-5">
                     Trip Tip can help you get better information using the TripTip application! Just enter the site and start traveling , without misinformation!
                 </p>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="/PLACEs/">Search More</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="/Place/">Search More</a>
             </div>
         </div>
     </div>
 </header>
-
 
 <section class="page-section" id="services">
     <div class="container">
@@ -62,84 +61,25 @@
         <h2 class="text-center mt-0">Recent Reviews</h2>
         <hr class="divider my-4">
         <div class="row no-gutters">
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="~/image/001.jpg">
-                    <img class="img-fluid" src="~/image/001.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">
-                            Category
+            @{ int i = 0;}
+            @foreach (var item in Model)
+            {
+                if (i > 5) { break; }
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="/Place/Details/@item.PID ">
+                        <img class="img-fluid" src="~/images/@item.REVIEW_IMAGE" style="width : 650px; height : 250px;">
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">
+                                @Html.DisplayFor(modelitem => item.PLACE.CATEGORY)
+                            </div>
+                            <div class="project-name">
+                                @Html.DisplayFor(modelitem => item.PLACE.STORE_NAME)
+                            </div>
                         </div>
-                        <div class="project-name">
-                            Review Name
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="~/image/002.jpg">
-                    <img class="img-fluid" src="~/image/002.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Review Name
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="~/image/003.jpg">
-                    <img class="img-fluid" src="~/image/003.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Review Name
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="~/image/004.jpg">
-                    <img class="img-fluid" src="~/image/004.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Review Name
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="~/image/005.jpg">
-                    <img class="img-fluid" src="~/image/005.jpg" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="project-category text-white-50">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Review Name
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="~/image/006.jpg">
-                    <img class="img-fluid" src="~/image/006.jpg" alt="">
-                    <div class="portfolio-box-caption p-3">
-                        <div class="project-category text-white-50">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Review Name
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+                i++;
+            }
         </div>
     </div>
 </section>
@@ -160,7 +100,6 @@
             </div>
             <div class="col-lg-4 mr-auto text-center">
                 <i class="fa fa-envelope fa-3x"></i>
-                <!-- Make sure to change the email address in anchor text AND the link below! -->
                 <i class="d-block" href="mailto:contact@yourwebsite.com">contact@yourwebsite.com</i>
             </div>
         </div>

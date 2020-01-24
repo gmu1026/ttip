@@ -101,12 +101,26 @@ namespace TTIPApplication.Controllers
         // 자세한 내용은 https://go.microsoft.com/fwlink/?LinkId=317598을(를) 참조하십시오.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "REVIEW_ID,PID,WRITER,SCORE,UPDATE_DATE,REVIEW_COMMENT")] REVIEW review)
+        public ActionResult Edit([Bind(Include = "REVIEW_ID,PID,WRITER,SCORE,UPDATE_DATE,REVIEW_COMMENT,REVIEW_IMAGE")] REVIEW review)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
+
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null
+                        && file.ContentLength > 0)
+                    {
+                        var fileName = "review_img_" + review.REVIEW_ID + "_" + Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/images/"), fileName);
+                        file.SaveAs(path);
+                        review.REVIEW_IMAGE = fileName;
+                    }
+                }
                 return Redirect("~/Place/Details/" + review.PID);
             }
             ViewBag.PID = new SelectList(db.PLACE, "ID", "STORE_NAME", review.PID);
