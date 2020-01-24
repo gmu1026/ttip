@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TTIP_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_NAME" />
+          </Key>
+          <Property Name="CATEGORY_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="CITY_NAME" />
+          </Key>
+          <Property Name="CITY_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLACE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STORE_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CITY" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CATEGORY" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EXPLANATION" Type="varchar(max)" />
+          <Property Name="ADDRESS" Type="varchar(max)" />
+          <Property Name="DETAIL_IMAGE" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="REVIEW">
+          <Key>
+            <PropertyRef Name="REVIEW_ID" />
+          </Key>
+          <Property Name="REVIEW_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PID" Type="int" Nullable="false" />
+          <Property Name="WRITER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SCORE" Type="int" />
+          <Property Name="UPDATE_DATE" Type="date" />
+          <Property Name="REVIEW_COMMENT" Type="varchar(max)" Nullable="false" />
+          <Property Name="REVIEW_IMAGE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_PLACE_CATEGORY">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PLACE" Type="Self.PLACE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_NAME" />
+            </Principal>
+            <Dependent Role="PLACE">
+              <PropertyRef Name="CATEGORY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLACE_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PLACE" Type="Self.PLACE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CITY_NAME" />
+            </Principal>
+            <Dependent Role="PLACE">
+              <PropertyRef Name="CITY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REVIEW_PLACE1">
+          <End Role="PLACE" Type="Self.PLACE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLACE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TTIP_DBModelStoreContainer">
+          <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CITY" EntityType="Self.CITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PLACE" EntityType="Self.PLACE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REVIEW" EntityType="Self.REVIEW" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PLACE_CATEGORY" Association="Self.FK_PLACE_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="PLACE" EntitySet="PLACE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLACE_CITY" Association="Self.FK_PLACE_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="PLACE" EntitySet="PLACE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REVIEW_PLACE1" Association="Self.FK_REVIEW_PLACE1">
+            <End Role="PLACE" EntitySet="PLACE" />
+            <End Role="REVIEW" EntitySet="REVIEW" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TTIP_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_NAME" />
+          </Key>
+          <Property Name="CATEGORY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PLACE" Relationship="Self.FK_PLACE_CATEGORY" FromRole="CATEGORY" ToRole="PLACE" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="CITY_NAME" />
+          </Key>
+          <Property Name="CITY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PLACE" Relationship="Self.FK_PLACE_CITY" FromRole="CITY" ToRole="PLACE" />
+        </EntityType>
+        <EntityType Name="PLACE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STORE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CATEGORY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EXPLANATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DETAIL_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CATEGORY1" Relationship="Self.FK_PLACE_CATEGORY" FromRole="PLACE" ToRole="CATEGORY" />
+          <NavigationProperty Name="CITY1" Relationship="Self.FK_PLACE_CITY" FromRole="PLACE" ToRole="CITY" />
+          <NavigationProperty Name="REVIEW" Relationship="Self.FK_REVIEW_PLACE1" FromRole="PLACE" ToRole="REVIEW" />
+        </EntityType>
+        <EntityType Name="REVIEW">
+          <Key>
+            <PropertyRef Name="REVIEW_ID" />
+          </Key>
+          <Property Name="REVIEW_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="WRITER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SCORE" Type="Int32" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="REVIEW_COMMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PLACE" Relationship="Self.FK_REVIEW_PLACE1" FromRole="REVIEW" ToRole="PLACE" />
+          <Property Name="REVIEW_IMAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_PLACE_CATEGORY">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="PLACE" Type="Self.PLACE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_NAME" />
+            </Principal>
+            <Dependent Role="PLACE">
+              <PropertyRef Name="CATEGORY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLACE_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
+          <End Role="PLACE" Type="Self.PLACE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CITY_NAME" />
+            </Principal>
+            <Dependent Role="PLACE">
+              <PropertyRef Name="CITY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REVIEW_PLACE1">
+          <End Role="PLACE" Type="Self.PLACE" Multiplicity="1" />
+          <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLACE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TTIP_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" />
+          <EntitySet Name="CITY" EntityType="Self.CITY" />
+          <EntitySet Name="PLACE" EntityType="Self.PLACE" />
+          <EntitySet Name="REVIEW" EntityType="Self.REVIEW" />
+          <AssociationSet Name="FK_PLACE_CATEGORY" Association="Self.FK_PLACE_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="PLACE" EntitySet="PLACE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLACE_CITY" Association="Self.FK_PLACE_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="PLACE" EntitySet="PLACE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REVIEW_PLACE1" Association="Self.FK_REVIEW_PLACE1">
+            <End Role="PLACE" EntitySet="PLACE" />
+            <End Role="REVIEW" EntitySet="REVIEW" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TTIP_DBModelStoreContainer" CdmEntityContainer="TTIP_DBEntities">
+          <EntitySetMapping Name="CATEGORY">
+            <EntityTypeMapping TypeName="TTIP_DBModel.CATEGORY">
+              <MappingFragment StoreEntitySet="CATEGORY">
+                <ScalarProperty Name="CATEGORY_NAME" ColumnName="CATEGORY_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CITY">
+            <EntityTypeMapping TypeName="TTIP_DBModel.CITY">
+              <MappingFragment StoreEntitySet="CITY">
+                <ScalarProperty Name="CITY_NAME" ColumnName="CITY_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLACE">
+            <EntityTypeMapping TypeName="TTIP_DBModel.PLACE">
+              <MappingFragment StoreEntitySet="PLACE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STORE_NAME" ColumnName="STORE_NAME" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="EXPLANATION" ColumnName="EXPLANATION" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="DETAIL_IMAGE" ColumnName="DETAIL_IMAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REVIEW">
+            <EntityTypeMapping TypeName="TTIP_DBModel.REVIEW">
+              <MappingFragment StoreEntitySet="REVIEW">
+                <ScalarProperty Name="REVIEW_IMAGE" ColumnName="REVIEW_IMAGE" />
+                <ScalarProperty Name="REVIEW_ID" ColumnName="REVIEW_ID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="WRITER" ColumnName="WRITER" />
+                <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="REVIEW_COMMENT" ColumnName="REVIEW_COMMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="없음" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

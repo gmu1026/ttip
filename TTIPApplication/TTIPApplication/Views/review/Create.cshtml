@@ -1,0 +1,91 @@
+﻿@model TTIPApplication.Models.REVIEW
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<section class="create_img"></section>
+<section>
+    <div class="container_test">
+        <br>
+        <br>
+        <h2 class="text-center text-black"> <i class="fa fa-plus-circle fa-1x"></i> Create </h2>
+        <hr class="divider my-4">
+        <div class="card w-100">
+            <br />
+            @using (Html.BeginForm("Create", "Review", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2>&nbsp;&nbsp;&nbsp;&nbsp;REVIEW</h2>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(model => model.PID, new { @class = "form-control", @Value = @ViewBag.placeInfo.ID })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.WRITER, htmlAttributes: new { @class = "control-label col-md-4", @style = "margin-left: 35px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WRITER, new { htmlAttributes = new { @class = "form-control", @style = "margin-left: 35px", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.WRITER, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UPDATE_DATE, htmlAttributes: new { @class = "control-label col-md-4", @style = "margin-left: 35px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UPDATE_DATE, new { htmlAttributes = new { @class = "form-control", @style = "margin-left: 35px", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.UPDATE_DATE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.SCORE, htmlAttributes: new { @class = "control-label col-md-4", @style = "margin-left: 35px" })
+                <div class="ml-5 row">
+                    <div class="rate">
+                        <input type="radio" id="star5" name="SCORE" value="5" />
+                        @Html.Label("star5", "star5")
+                        <input type="radio" id="star4" name="SCORE" value="4" />
+                        @Html.Label("star4", "star4")
+                        <input type="radio" id="star3" name="SCORE" value="3" />
+                        @Html.Label("star3", "star3")
+                        <input type="radio" id="star2" name="SCORE" value="2" />
+                        @Html.Label("star2", "star2")
+                        <input type="radio" id="star1" name="SCORE" value="1" />
+                        @Html.Label("star1", "star1")
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.REVIEW_COMMENT, htmlAttributes: new { @class = "control-label col-md-4", @style = "margin-left: 35px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.REVIEW_COMMENT, new { htmlAttributes = new { @class = "form-control", @style = "margin-left: 35px" } })
+                    @Html.ValidationMessageFor(model => model.REVIEW_COMMENT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="file" class="form-control-file" name="upload_imamge" style="margin-left:35px" />
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary mb-2" , style="margin-left:35px" />
+                    @Html.ActionLink(" Back", "Details", "Place", new { id = @ViewBag.placeInfo.ID }, htmlAttributes: new { @class = "btn btn-primary mb-2"  })
+                </div>
+            </div>
+            <hr />
+        </div>
+            }
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,76 +1,114 @@
-﻿@{
+﻿@model IEnumerable<TTIPApplication.Models.REVIEW>
+
+@{
     ViewBag.Title = "TTIP";
 }
-    <div class="container-fluid">
-        <div class="jumbotron">
-            <div></div>
-            <div style="height : 250px;">
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-10 align-self-end">
+                <hr> <hr />
             </div>
-            
+            <div class="col-lg-8 align-self-baseline">
+                <p class="text-white-75 font-weight-light mb-5">
+                    Trip Tip can help you get better information using the TripTip application! Just enter the site and start traveling , without misinformation!
+                </p>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="/Place/">Search More</a>
+            </div>
         </div>
-            
-        <div class="container body-content">
-            <div class="center-block">
-                <div class="col-xs-2">
-                    <select class="form-control">
-                        <option value="city">CITY</option>
-                        <option value="la">LA</option>
-                        <option value="oxnard">OXNARD</option>
-                        <option value="sm">SANTA MARIA</option>
-                    </select>
-                </div>
-                <div class="col-xs-2">
-                    <select class="form-control">
-                        <option value="categori">CATEGORI</option>
-                        <option value="restaurant">RESTAURANT</option>
-                        <option value="hotel">HOTEL</option>
-                        <option value="leisure">LEISURE</option>
-                    </select>
-                </div>
-                <div class="col-xs-3">
-                    <input type="text" class="form-control" />
-                </div>
-                <div class="col-xs-2">
-                    <input type="submit" class="form-control" />
+    </div>
+</header>
+
+<section class="page-section" id="services">
+    <div class="container">
+        <h2 class="text-center mt-0">Providing Service</h2>
+        <hr class="divider my-4">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fa fa-check fa-3x"></i>
+                    <h3 class="h4 mb-2">Reliability information</h3>
+                    <p class="text-muted mb-0">You can get accurate information!</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-11">
-                    <strong>Recent Review</strong>
-                </div>
-                <div class="col-md-offset-0">
-                    <button type="button" class="btn btn-link">
-                        @Html.ActionLink("more", "", "PLACEs")
-                    </button>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fa fa-upload fa-3x"></i>
+                    <h3 class="h4 mb-2">Up to Date</h3>
+                    <p class="text-muted mb-0">Our team are updated regularly to keep them bug free!</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="~/image/img2.jpg" onerror="~/image/img7.jpg" height="300" width="300" />
-                    <p>You can easily find a web hosting company </p>
-                </div>
-                <div class="col-md-4">
-                    <img src="~/image/img3.jpg" onerror="~/image/img7.jpg" height="300" width="300" />
-                    <p>You can easily find a web hosting company </p>
-                </div>
-                <div class="col-md-4">
-                    <img src="~/image/img4.jpg" onerror="~/image/img7.jpg" height="300" width="300" />
-                    <p>You can easily find a web hosting company </p>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fa fa-search fa-3x"></i>
+                    <h3 class="h4 mb-2">Quick Search</h3>
+                    <p class="text-muted mb-0">You can find the information you want quickly!</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="~/image/img5.jpg" onerror="~/image/img7.jpg" height="300" width="300" />
-                    <p>You can easily find a web hosting company </p>
-                </div>
-                <div class="col-md-4">
-                    <img src="~/image/img6.jpg" onerror="~/image/img7.jpg" height="300" width="300" />
-                    <p>You can easily find a web hosting company </p>
-                </div>
-                <div class="col-md-4">
-                    <img src="~/image/img8.jpg" onerror="~/image/img7.jpg" height="300" width="300" />
-                    <p>You can easily find a web hosting company </p>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <i class="fa fa-user-circle-o fa-3x"></i>
+                    <h3 class="h4 mb-2">Ensure anonymity</h3>
+                    <p class="text-muted mb-0">You can express freely on the network!</p>
                 </div>
             </div>
         </div>
     </div>
+</section>
+
+<section id="portfolio">
+    <div class="container-fluid">
+        <h2 class="text-center mt-0">Recent Reviews</h2>
+        <hr class="divider my-4">
+        <div class="row no-gutters">
+            @{ int i = 0;}
+            @foreach (var item in Model)
+            {
+                if (i > 5) { break; }
+                <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="/Place/Details/@item.PID ">
+                        @if (item.REVIEW_IMAGE != null)
+                        {
+                            <img class="img-fluid" src="~/images/@item.REVIEW_IMAGE" style="width : 650px; height : 250px;">
+                        }
+                        else
+                        {
+                            <img class="img-fluid" src="~/images/404.png" style="width : 650px; height : 250px;">
+                        }
+                        <div class="portfolio-box-caption">
+                            <div class="project-category text-white-50">
+                                @Html.DisplayFor(modelitem => item.PLACE.CATEGORY)
+                            </div>
+                            <div class="project-name">
+                                @Html.DisplayFor(modelitem => item.PLACE.STORE_NAME)
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                i++;
+            }
+        </div>
+    </div>
+</section>
+
+<section class="page-section" id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="mt-0">Let's Contact Me!</h2>
+                <hr class="divider my-4">
+                <p class="text-muted mb-5">Do you need any more? Give us a call or send us an email and we will help you as soon as possible!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                <i class="fa fa-phone fa-3x"></i>
+                <div>+1 (202) 555-0149</div>
+            </div>
+            <div class="col-lg-4 mr-auto text-center">
+                <i class="fa fa-envelope fa-3x"></i>
+                <i class="d-block" href="mailto:contact@yourwebsite.com">contact@yourwebsite.com</i>
+            </div>
+        </div>
+    </div>
+</section>

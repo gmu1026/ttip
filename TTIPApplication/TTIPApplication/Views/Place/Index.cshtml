@@ -1,53 +1,104 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        p{
-            text-align:center
-        }
+﻿@model IEnumerable<TTIPApplication.Models.PLACE>
 
-        .image {
-            text-align : center
-        }
+@{
+    ViewBag.Title = "Index";
+}
 
-
-    </style>
-
-</head>
-
-<body>
-    <div class="image"> 
-        <img src="bbq1.jpg" width="275" height="183">
-        <img src="bbq2.jpg" width="275" height="183">
-        <img src="bbq3.jpg" width="275" height="183">
-    </div>
-      
-    <form action="">
-        <p id="name" style="font-weight: bold; font-size: 3em;">Name</p>
-        <p id="address" style="color: gray;">Address</p>
-        <p id="information" style="font-size: 1em;">Information</p>
-
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand">Review</a>
-            <form class="form-inline">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+    <section class="search_img" id="services">
+        <div class="container_test2">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h2 class="text-center text-white"> <i class="fa fa-hashtag fa-1x"></i> Search </h2>
+            <hr class="divider my-4">
+            <form action="/Place/" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DropDownList("CITY", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownList("CATEGORY", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-3">
+                        @using (Html.BeginForm())
+                        {
+                            <p>
+                                @Html.TextBox("searchString", null, htmlAttributes : new{ @class= "form-control" })
+                            </p>
+                        }
+                    </div>
+                    <div class="col-md-3">
+                        <input type="submit" class="form-control" value="Search" />
+                    </div>
+                </div>
             </form>
-        </nav>
+        </div>
+    </section>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, htmlAttributes : new { @class="btn btn-primary mb-2" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            THUMNAIL
+        </th>
+        <th>
+            @Html.ActionLink("STORE NAME","Index",new { sortOrder = ViewBag.StoreNameSort})
+        </th>
+        <th>
+            EXPLANATION
+        </th>
+        <th>
+            ADDRESS
+        </th>
+        <th>
+            CATEGORY
+        </th>
+        <th>
+            CITY
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+<tr>
+    @{ 
+        if (item.DETAIL_IMAGE != null)
+        {
+        <td>
+            <a href="/Place/Details/@item.ID">
+                <img src="~/images/@item.DETAIL_IMAGE" alt="detail_image" style="height : 150px; width:150px;" />
+            </a>
+        </td>
+        } else
+        {
+            <td></td>
+        }
+    }
+    <td>
+        @Html.ActionLink(item.STORE_NAME, "Details", new { id = item.ID })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EXPLANATION)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ADDRESS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CATEGORY1.CATEGORY_NAME)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CITY1.CITY_NAME)
+    </td>
+</tr>
+    }
+</table>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
-    </form>
-    <div style="overflow:scroll">
-        <table class="table">
-            <tr>
-                <td rowspan="3"><img src="bbq1.jpg" width="100" height="100"></td>
-                <td height="50">Writer : Woosung</td>
-            </tr>
-            <tr>
-                <td width="800" height="50">Date : 01/14/2020</td>
-            </tr>
-            <tr>
-                <td height="50">Comment : Good!</td>
-            </tr>
-        </table>
-    </div>
-</html>

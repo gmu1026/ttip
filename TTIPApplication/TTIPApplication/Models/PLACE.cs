@@ -17,18 +17,20 @@ namespace TTIPApplication.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PLACE()
         {
-            this.review_ = new HashSet<review_>();
+            this.REVIEW = new HashSet<REVIEW>();
         }
     
         public int ID { get; set; }
         public string STORE_NAME { get; set; }
         public string CITY { get; set; }
-        public string category { get; set; }
-        public string place_ex { get; set; }
+        public string CATEGORY { get; set; }
+        public string EXPLANATION { get; set; }
+        public string ADDRESS { get; set; }
+        public string DETAIL_IMAGE { get; set; }
     
-        public virtual category category1 { get; set; }
+        public virtual CATEGORY CATEGORY1 { get; set; }
         public virtual CITY CITY1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<review_> review_ { get; set; }
+        public virtual ICollection<REVIEW> REVIEW { get; set; }
     }
 }

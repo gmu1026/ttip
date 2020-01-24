@@ -1,0 +1,112 @@
+﻿@model TTIPApplication.Models.PLACE
+
+<section class="create_img"></section>
+<div class="container">
+    <h4>PLACE</h4>
+    <hr />
+    <img src="~/images/@Html.DisplayFor(model => model.DETAIL_IMAGE)" alt="detail_image" style="height : 250px; width:250px;" />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STORE_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STORE_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EXPLANATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXPLANATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATEGORY1.CATEGORY_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORY1.CATEGORY_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CITY1.CITY_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CITY1.CITY_NAME)
+        </dd>
+
+    </dl>
+    <p>
+        @Html.ActionLink("Add Review", "Create", "Review", new { id= Model.ID }, null) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+
+<section class="page-section" id="services">
+    <div class="container">
+        <h2 class="text-center mt-0">REVIEWS</h2>
+        <hr class="divider my-4">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>
+                    WRITER
+                </th>
+                <th>
+                    @Html.ActionLink("SCORE","Details",new { sortOrder = ViewBag.ScoreSort})
+                </th>
+                <th>
+                    COMMENT
+                </th>
+                <th>
+                    @Html.ActionLink("REGISTER_DATE", "Details", new { sortOrder = ViewBag.DateSort })
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in ViewBag.reviews)
+            {
+                <tr>
+                    <td>
+                        @if (item.REVIEW_IMAGE != null)
+                        {
+                            <img src="~/images/@item.REVIEW_IMAGE" alt="detail_image" style="height : 150px; width:150px;" />
+                        }
+                        else
+                        {
+                            <img src="~/images/404.png" alt="detail_image" style="height : 150px; width:150px;" />
+                        }
+                    </td>
+                    <td>
+                        @item.WRITER
+                    </td>
+                    <td>
+                        @item.SCORE
+                    </td>
+                    <td>
+                        @item.REVIEW_COMMENT
+                    </td>
+                    <td>
+                        @item.UPDATE_DATE.ToString("yyyy/MMM/dd")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Review", new { id = item.REVIEW_ID }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Review", new { id = item.REVIEW_ID }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</section>

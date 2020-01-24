@@ -7,34 +7,97 @@
     <title>@ViewBag.Title - Trip Tip</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/custom.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/45485ced34.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("애플리케이션 이름", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <img src="~/image/logo.JPG" height="50" width="50" alt="Home" />
-                    <li>@Html.ActionLink("TTIP", "Index", "Home")</li>
+            <a class="navbar-brand js-scroll-trigger" href="/">Trip Tip</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#portfolio">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                    </li>
                 </ul>
             </div>
+
         </div>
-    </div>
-    <div class="container-fluid">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - TTIP</p>
-        </footer>
-    </div>
+    </nav>
+
+    @RenderBody()
+
+    <footer class="section section_footer" style="background-color:#151515">
+        <div class="container ">
+            </br>
+            <div class="row">
+                <div class="col-sm-4">
+
+                    <!-- About Us -->
+                    <h5 class="section_footer__heading" style="color:orangered">
+                        About Us
+                    </h5>
+                    <p style="color:dimgrey;">
+                        Evaluate various convenience facilities and restaurants and prepare a review to give more accurate information.The goal is to use information to make a better trip.
+                    </p>
+
+                </div>
+                <div class="col-sm-4">
+
+                    <!-- Contact info -->
+                    <h5 class="section_footer__heading" style="color:orangered">
+                        Location info
+                    </h5>
+                    <ul class="section_footer__info" style="color:dimgrey">
+                        <li>
+                            Santa Maria, CA
+                            West Coast Operations
+                            421 East Betterravia, Ste 203
+                            Santa Maria, CA 93454
+                        </li>
+                        <li>
+                            <a href="mailto:Indyne@gmail.com">Indyne@gmail.com</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-sm-4">
+
+                    <!-- Opening hours -->
+                    <h5 class="section_footer__heading" style="color:orangered">
+                        Opening hours
+                    </h5>
+                    <div class="section_footer__open" style="color:dimgrey">
+                        <div class="section_footer__open__days">Monday - Thursday</div>
+                        <div class="section_footer__open__time">10:00 AM - 11:00 PM</div>
+                    </div>
+                    <div class="section_footer__open" style="color:dimgrey">
+                        <div class="section_footer__open__days">Friday - Sunday</div>
+                        <div class="section_footer__open__time">12:00 AM - 03:00 AM</div>
+                    </div>
+
+                </div>
+            </div> <!-- / .row -->
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Copyright -->
+                    <div class="section_footer__copyright" style="color:orangered">
+                        © <span id="js-current-year">2020</span> Touché. All rights reserved.
+                    </div>
+
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
