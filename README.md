@@ -18,7 +18,7 @@ This program can view the most recent reviews and review by Place.
 ![2](https://user-images.githubusercontent.com/48439674/73098355-12d62380-3e9e-11ea-8986-e92fe8aa5d69.png)
 
 ### How to use
-</hr>
+
 1. You can see the latest reviews on the website and Click on the "Search More" button if you want to see more.
 
 2. Select 'City,Category' and type a place name and click the search button.
