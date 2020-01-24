@@ -12,7 +12,7 @@ Trip + tip
 ### Mockup
 <img src="https://user-images.githubusercontent.com/48439674/73098350-0fdb3300-3e9e-11ea-9b55-54681b2f2cfd.jpg" width="50%"><img src="https://user-images.githubusercontent.com/48439674/73098352-0fdb3300-3e9e-11ea-8e17-0fd22866d5cf.jpg" width="50%">
 <img src="https://user-images.githubusercontent.com/48439674/73098354-12d62380-3e9e-11ea-9ea6-6b0bb4922ca2.png" width="50%"><img src="https://user-images.githubusercontent.com/48439674/73098355-12d62380-3e9e-11ea-8986-e92fe8aa5d69.png" width="50%">
-<img src="https://user-images.githubusercontent.com/48439674/73098351-0fdb3300-3e9e-11ea-9b31-33a2c707e47d.jpg" width="50%">
+<img src="https://user-images.githubusercontent.com/48439674/73098351-0fdb3300-3e9e-11ea-9b31-33a2c707e47d.jpg" width="60%">
 
 ### How to use
 
