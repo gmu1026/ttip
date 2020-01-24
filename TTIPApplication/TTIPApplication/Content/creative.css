@@ -561,6 +561,30 @@ pre code {
   margin-left: auto;
 }
 
+.container_test {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container_test2 {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container_test3 {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -581,8 +605,26 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 1519px;
   }
+}
+
+@media (min-width: 1200px) {
+    .container_test3 {
+        max-width: 1200px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container_test2 {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container_test {
+        max-width: 600px;
+    }
 }
 
 .container-fluid {
