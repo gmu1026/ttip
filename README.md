@@ -6,12 +6,10 @@ Trip + tip
 
 ### explanation
 
-</hr>
 It is a program that searches places and writes reviews about places.
 This program can view the most recent reviews and review by Place.
 
 ### Mockup
-</hr>
 
 ![1](https://user-images.githubusercontent.com/48439674/73098350-0fdb3300-3e9e-11ea-9b55-54681b2f2cfd.jpg)
 ![3](https://user-images.githubusercontent.com/48439674/73098351-0fdb3300-3e9e-11ea-9b31-33a2c707e47d.jpg)
@@ -23,7 +21,7 @@ This program can view the most recent reviews and review by Place.
 </hr>
 1. You can see the latest reviews on the website and Click on the "Search More" button if you want to see more.
 
-2.Select 'City,Category' and type a place name and click the search button.
+2. Select 'City,Category' and type a place name and click the search button.
 
 3. A list of locations is displayed, and clicking the Detail button comes up with a detailed page about the location.
 
