@@ -3,7 +3,9 @@ Trip + tip
 
 ## Introduction
 </hr>
+
 ### explanation
+
 </hr>
 It is a program that searches places and writes reviews about places.
 This program can view the most recent reviews and review by Place.
@@ -30,6 +32,7 @@ This program can view the most recent reviews and review by Place.
 5. Click the "Add Review" button to go to the review registration page.
 
 6. You can edit or delete a registered review.
+
 </hr>
 
 ## Development environment
