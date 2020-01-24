@@ -331,14 +331,12 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\City\Create.cshtml" />
     <Content Include="Views\Review\Create.cshtml" />
-    <Content Include="Views\Review\Delete.cshtml" />
     <Content Include="Views\Review\Edit.cshtml" />
     <Content Include="Views\Review\Index.cshtml" />
     <Content Include="Views\Place\Create.cshtml" />
-    <Content Include="Views\Place\Delete.cshtml" />
-    <Content Include="Views\Place\Details.cshtml" />
     <Content Include="Views\Place\Edit.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Place\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

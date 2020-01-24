@@ -1,7 +1,7 @@
 ﻿@model TTIPApplication.Models.PLACE
 
 <section class="create_img"></section>
-<div>
+<div class="container">
     <h4>PLACE</h4>
     <hr />
     <img src="~/images/@Html.DisplayFor(model => model.DETAIL_IMAGE)" alt="detail_image" style="height : 250px; width:250px;" />
@@ -47,13 +47,13 @@
         </dd>
 
     </dl>
+    <p>
+        @Html.ActionLink("Add Review", "Create", "Review", new { id= Model.ID }, null) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Add Review", "Create", "Review", new { id= Model.ID }, null) |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
 
 <section class="page-section" id="services">
     <div class="container">
