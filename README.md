@@ -36,3 +36,16 @@ Trip + tip
   <li>Microsoft SQL Server
   <li>Bootstrap(version 4.4.1)
 </ul>
+
+## Function in project
+</hr>
+<ul>
+  <li>Create</br>-.Net framework
+  <li>Retrieve</br>-.Net(C#)
+  <li>Update</br>-.Net(C#)
+  <li>Delete</br>-.Net(C#)
+  <li>Search</br>-.Net(C#), Java script(JQuery)
+  <li>sorting </br>-C
+  <li>Star rating</br>-Boot Strap
+</ul>  
+
