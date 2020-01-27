@@ -9,7 +9,12 @@
         PLACE
     </h4>
     <hr />
-    <img src="~/images/@Html.DisplayFor(model => model.DETAIL_IMAGE)" alt="detail_image" style="height : 250px; width:250px;" />
+    @if(Model.DETAIL_IMAGE != null){ 
+        <img src="~/images/@Html.DisplayFor(model => model.DETAIL_IMAGE)" alt="detail_image" style="height : 250px; width:250px;" />
+    } else
+    {
+
+    }
 
     <dl class="dl-horizontal">
         <dt>

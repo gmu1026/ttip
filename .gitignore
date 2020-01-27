@@ -339,4 +339,4 @@ ASALocalRun/
 healthchecksdb
 
 # Upload Image
-/TTIPApplication/TTIPApplication/images/**
+/TTIPApplication/TTIPApplication/images/*
