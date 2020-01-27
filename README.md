@@ -1,5 +1,5 @@
 # TTIP
-Trip + ㅆip
+Trip + Tip
 
 ## Introduction
 </hr>
