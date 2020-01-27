@@ -1,10 +1,16 @@
 ﻿@model TTIPApplication.Models.PLACE
 
 <section class="create_img"></section>
-<div class="container">
-    <h4>PLACE</h4>
+<br />
+<br />
+<br />
+<div class="container_test" style="text-align:center">
+    <h4>
+        PLACE
+    </h4>
     <hr />
     <img src="~/images/@Html.DisplayFor(model => model.DETAIL_IMAGE)" alt="detail_image" style="height : 250px; width:250px;" />
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.STORE_NAME)
@@ -48,7 +54,7 @@
 
     </dl>
     <p>
-        @Html.ActionLink("Add Review", "Create", "Review", new { id= Model.ID }, null) |
+        @Html.ActionLink("Add Review", "Create", "Review", new { id = Model.ID }, null) |
         @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
         @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) |
         @Html.ActionLink("Back to List", "Index")
@@ -66,7 +72,7 @@
                     WRITER
                 </th>
                 <th>
-                    @Html.ActionLink("SCORE","Details",new { sortOrder = ViewBag.ScoreSort})
+                    @Html.ActionLink("SCORE", "Details", new { sortOrder = ViewBag.ScoreSort })
                 </th>
                 <th>
                     COMMENT
