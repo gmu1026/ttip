@@ -337,7 +337,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-/TTIPApplication/TTIPApplication/images
 
 # Upload Image
 /TTIPApplication/TTIPApplication/images/*
