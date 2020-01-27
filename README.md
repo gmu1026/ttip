@@ -1,5 +1,5 @@
-# ttip
-Trip + tip
+# TTIP
+Trip + ㅆip
 
 ## Introduction
 </hr>
@@ -51,3 +51,8 @@ Trip + tip
   <li>Star rating</br>-Boot Strap
 </ul>  
 
+## User Guide
+</hr>
+<url>
+  https://drive.google.com/open?id=15yApCDq_0kLeqyTrn9FnF_nZLnuK7kaV
+</url>
