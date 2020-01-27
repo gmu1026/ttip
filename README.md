@@ -1,5 +1,5 @@
-# ttip
-Trip + tip
+# TTIP
+Trip + Tip
 
 ## Introduction
 </hr>
@@ -43,6 +43,6 @@ Trip + tip
   <li>CRUD</br>-.Net(C#)
   <li>Search</br>-.Net(C#), Java Script(JQuery)
   <li>Sorting </br>-C#
-  <li>Star rating</br>-Boot Strap
+  <li>Star rating</br>-Bootstrap
 </ul>  
 
