@@ -181,6 +181,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="ConnectionStrings.config" />
+    <Content Include="images\panda.png" />
     <Content Include="Models\TTIP_DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TTIP_DB.edmx</DependentUpon>
@@ -340,7 +341,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\" />
     <Folder Include="image\" />
     <Folder Include="static\" />
   </ItemGroup>
