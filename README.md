@@ -6,8 +6,13 @@ Trip + tip
 
 ### Explanation
 
-> It is a program that searches places and writes reviews about places. <br>
-> This program can view the most recent reviews and review by Place.
+> This program is for providing review of restaurant in Oxnard, Santa Maria, and Los Angeles. <br><br>
+> The user can visit and pre-exprience primary attraction of the city so that they can choose where they visit in reality. <br><br>
+> They can search by keyword, looking limited and not too much data they want. They can save their time instead of looking at all data the site have. <br><br>
+> The site have sorting function. If user want to look the information, they can decide order by sorting. <br><br>
+> It is a program that searches places and writes reviews about places. <br><br>
+> This program can view the most recent reviews and review by Place. People can share their feeling and introduce theire exprience on specific place.  <br><br>
+
 
 ### Mockup
 <img src="https://user-images.githubusercontent.com/48439674/73098350-0fdb3300-3e9e-11ea-9b55-54681b2f2cfd.jpg" width="50%"><img src="https://user-images.githubusercontent.com/48439674/73098352-0fdb3300-3e9e-11ea-8e17-0fd22866d5cf.jpg" width="50%">
