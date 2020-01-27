@@ -40,12 +40,9 @@ Trip + tip
 ## Function in project
 </hr>
 <ul>
-  <li>Create</br>-.Net(C#)
-  <li>Retrieve</br>-.Net(C#)
-  <li>Update</br>-.Net(C#)
-  <li>Delete</br>-.Net(C#)
+  <li>CRUD</br>-.Net(C#)
   <li>Search</br>-.Net(C#), Java Script(JQuery)
-  <li>sorting </br>-C#
+  <li>Sorting </br>-C#
   <li>Star rating</br>-Boot Strap
 </ul>  
 
