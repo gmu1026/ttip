@@ -45,10 +45,10 @@ Trip + Tip
 ## Function in project
 </hr>
 <ul>
-  <li>CRUD</br>-.Net(C#)
-  <li>Search</br>-.Net(C#), Java Script(JQuery)
+  <li>CRUD</br>-.Net Asp(C#)
+  <li>Search</br>-.Net(C#), JavaScript(JQuery)
   <li>Sorting </br>-C#
-  <li>Star rating</br>-Boot Strap
+  <li>Star rating</br>-Bootstrap
 </ul>  
 
 ## User Guide
