@@ -53,6 +53,4 @@ Trip + Tip
 
 ## User Guide
 </hr>
-<url>
-  https://drive.google.com/open?id=15yApCDq_0kLeqyTrn9FnF_nZLnuK7kaV
-</url>
+  https://drive.google.com/open?id=1pOPQfxxqVab61OlIL9PojN3lOH3GjIVc
